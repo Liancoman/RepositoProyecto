@@ -2,7 +2,7 @@
 
 int main()
 {
-    printf("Proyecto inicial\n");
+    printf("Proyecto iniciKKJKJKJKal\n");
 
     return 0;
 }
