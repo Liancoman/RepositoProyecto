@@ -2,7 +2,9 @@
 
 int main()
 {
-    printf("Emiliano esta enojado conmigo\n");
-
+    string nom;
+    printf("Emiliano\n");
+    printf("Intorduce tu nombre: ");
+    scanf("%s", nom);
     return 0;
 }
