@@ -8,6 +8,7 @@ int main()
 	printf("Proyecto inicial\n");
 	printf("Conflicto\n");
 	printf("Se desarollo intento de oferta\n");
+	printf("Quiero que se borre esta linea\n");
 	branch_to_prelectio();
 	
 	return 0;
