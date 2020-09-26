@@ -7,7 +7,7 @@ int main()
 {
 	printf("Proyecto inicial\n");
 	printf("Conflicto\n");
-	printf("Se desarollo intento de oferta\n");
+	printf("conflicto2\n");
 	branch_to_prelectio();
 	
 	return 0;
