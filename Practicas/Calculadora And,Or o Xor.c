@@ -1,8 +1,11 @@
 /******************************************************************************
-Calculadora con Operadores And, Or y Xor
+Calculadora con Operadores And, Or y Xor de Emiliano Fco García Manríquez.
 *******************************************************************************/
 #include <stdio.h>
 #include <conio.h>
+void AND();
+void OR();
+void XOR();
 void main()
 {
     unsigned int u8ValueToVariable=0;
@@ -53,7 +56,6 @@ void AND(int u8ValueToChange, int u8ValueToVariable)
 	scanf("%d",&u8ValueToCorrimiento);
 	if(u8ValueToCorrimiento<u8ValueToVariable)
 	{
-	    printf("Variable corrimiento es %d mientras que la base es %d \n",u8ValueToCorrimiento,u8ValueToChange);
 	    u8ValueToChange &=~(1 <<u8ValueToCorrimiento);
 	    printf("Variable Resultante: %d\n", u8ValueToChange);
 	}
@@ -66,7 +68,6 @@ void OR(int u8ValueToChange, int u8ValueToVariable)
 	scanf("%d",&u8ValueToCorrimiento);
 	if(u8ValueToCorrimiento<u8ValueToVariable)
 	{
-	    printf("Variable corrimiento es %d mientras que la base es %d \n",u8ValueToCorrimiento,u8ValueToChange);
 	    u8ValueToChange |=(1 <<u8ValueToCorrimiento);
 	    printf("Variable Resultante: %d\n", u8ValueToChange);
 	}
@@ -79,7 +80,6 @@ void XOR(int u8ValueToChange, int u8ValueToVariable)
 	scanf("%d",&u8ValueToCorrimiento);
 	if(u8ValueToCorrimiento<u8ValueToVariable)
 	{
-	    printf("Variable corrimiento es %d mientras que la base es %d \n",u8ValueToCorrimiento,u8ValueToChange);
 	    u8ValueToChange ^=(1 <<u8ValueToCorrimiento);
 	    printf("Variable Resultante: %d\n", u8ValueToChange);
 	}
