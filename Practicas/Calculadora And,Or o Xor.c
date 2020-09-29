@@ -1,17 +1,20 @@
 /******************************************************************************
 Calculadora con Operadores And, Or y Xor de Emiliano Fco García Manríquez.
 *******************************************************************************/
+
+/*PM->en General muy buen codigo y logica, solo detalles esteticos por pulir*/
+
 #include <stdio.h>
 #include <conio.h>
-void AND();
-void OR();
-void XOR();
-void main()
+void AND();		/*PM->El prototipo debe de llevar los argumentos como en la declaracion de la funcion*/
+void OR();		/*PM->El prototipo debe de llevar los argumentos como en la declaracion de la funcion*/
+void XOR();		/*PM->El prototipo debe de llevar los argumentos como en la declaracion de la funcion*/
+void main()		/*PM->El prototipo debe de llevar los argumentos como en la declaracion de la funcion*/
 {
-    unsigned int u8ValueToVariable=0;
-    unsigned int u8valueToOperation=0;
-    unsigned int u8valueToCloseWhile=1;
-    unsigned int u8ValueToChange=0;
+    unsigned int u8ValueToVariable=0;		/*PM->unsigned int seria u32 no u8*/
+    unsigned int u8valueToOperation=0;		/*PM->unsigned int seria u32 no u8*/
+    unsigned int u8valueToCloseWhile=1;		/*PM->unsigned int seria u32 no u8*/
+    unsigned int u8ValueToChange=0;			/*PM->unsigned int seria u32 no u8*/
     while(u8valueToCloseWhile==1)
     {
         printf("Ingrese de cuantos bits es tu variable: ");
@@ -36,13 +39,13 @@ void main()
         scanf("%d",&u8valueToOperation);
         switch(u8valueToOperation)
         {
-            case 1:
+            case 1:										/*PM->Recuerda no usar numeros magicos, mejor usa #defines*/
                 AND(u8ValueToChange,u8ValueToVariable);
             break;
-            case 2:
+            case 2:										/*PM->Recuerda no usar numeros magicos, mejor usa #defines*/
                 OR(u8ValueToChange,u8ValueToVariable);
             break;
-            case 3:
+            case 3:										/*PM->Recuerda no usar numeros magicos, mejor usa #defines*/
                 XOR(u8ValueToChange,u8ValueToVariable);
             break;
             default:printf("\nNo se seleccionó una opción valida\n");
