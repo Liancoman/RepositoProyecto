@@ -4,7 +4,9 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
+	printf("Before CapsOn: %s\n", au8array);
 	GENFUN_vCapsOn (&au8array[0], 18);
+	printf("After CapsOn: %s\n", au8array);
 	printf("%s\n", au8array);
 	
 }
@@ -13,7 +15,7 @@ void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList)
 {
 	while ( u8SizeOfList != 0 )
 	{
-		if( *pu8Src > ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src < ASCII_HIGH_THRESHOLD_OFF_ON)
+		if( *pu8Src > ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src < ASCII_HIGH_THRESHOLD_OFF_ON)    
 		{
 			*pu8Src -= ASCII_CONVERTION_FACTOR;
 		}
@@ -53,7 +55,12 @@ Retorno: El número de ocurrencias en la cadena.
 
 La función deberá recibir una cadena con N elementos y un Target a buscar,
 devolverá el número de veces que Target se repite en la misma.*/ 
+<<<<<<< HEAD
 	//return 0;}
+=======
+	return = 0;
+}
+>>>>>>> LAB01
  
 //{
 /*  Parámetros: 
@@ -62,7 +69,12 @@ devolverá el número de veces que Target se repite en la misma.*/
 Retorno: El promedio de N elementos de la cadena. 
 
 La función deberá recibir una cadena con N elementos y sacar el promedio.*/ 
+<<<<<<< HEAD
 	//return 0;
+=======
+	return = 0;
+}
+>>>>>>> LAB01
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
 {
