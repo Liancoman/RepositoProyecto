@@ -8,7 +8,7 @@ void main(void)
 	printf("Before CapsOn: %s\n", au8array);
 	GENFUN_vCapsOn (&au8array[0], 18);
 	printf("After CapsOn: %s\n", au8array);
-	printf("Funcion Get Off \n");;
+	printf("Funcion Get Off \n");
 	
 }
 
