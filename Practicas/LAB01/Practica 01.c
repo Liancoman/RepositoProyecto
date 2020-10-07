@@ -6,6 +6,7 @@ void main(void)
 	uint8 au8array[18]= "equipochavezgarcia";
 	GENFUN_vCapsOn (&au8array[0], 18);
 	printf("%s\n", au8array);
+	
 }
 
 void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList)
@@ -25,11 +26,11 @@ void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList)
 	}
 }
 
-void GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList)
+void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 {
 	while ( u8SizeOfList != 0 )
 	{
-		if( *pu8Src < ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src > ASCII_HIGH_THRESHOLD_OFF_ON)
+		if( *pu8Src > ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src < ASCII_HIGH_THRESHOLD_OFF_ON)
 		{
 			*pu8Src += ASCII_CONVERTION_FACTOR;
 		}
@@ -42,8 +43,8 @@ void GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList)
 	}
 }
 
-uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
-{
+//uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) {
+
 /*  Parámetros: 
 -pu8Src: Apuntador que recibe la dirección de la cadena. 
 -u8Target: Elemento a buscar en la cadena. 
@@ -52,17 +53,16 @@ Retorno: El número de ocurrencias en la cadena.
 
 La función deberá recibir una cadena con N elementos y un Target a buscar,
 devolverá el número de veces que Target se repite en la misma.*/ 
-}
+	//return 0;}
  
-uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList) 
-{
+//{
 /*  Parámetros: 
 -pu8Src: Apuntador que recibe la dirección de la cadena. 
 -u8SizeOfList: Número de elementos de la cadena. 
 Retorno: El promedio de N elementos de la cadena. 
 
 La función deberá recibir una cadena con N elementos y sacar el promedio.*/ 
-}
+	//return 0;
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
 {
