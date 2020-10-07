@@ -3,6 +3,7 @@
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
+typedef unsigned char u8Target;
 
 /*Definitions*/
 #define ASCII_HIGH_THRESHOLD_OFF_ON 123

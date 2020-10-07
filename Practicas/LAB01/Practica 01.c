@@ -50,14 +50,26 @@ void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 
 uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
 {
-/*  Parámetros: 
--pu8Src: Apuntador que recibe la dirección de la cadena. 
--u8Target: Elemento a buscar en la cadena. 
--u8SizeOfList: Número de elementos de la cadena. 
-Retorno: El número de ocurrencias en la cadena. 
+	while ( u8SizeOfList != 0)
+	{
+		printf("¿Que letra desea busscar?\n");
+		scanf ( " %c\n", &u8Target ); 
+		for ( Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One ++ )
+		{
+			if ( *pu8Src >= ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src <= ASCII_HIGH_THRESHOLD_OFF_ON )
+			{
+				if( u8Target == *pu8Src)
+				Contrador ++;
+			}
+			else
+			{
+				//nothing to do
+			}
+		}
+		printf("La letra %c se repite %d\n", u8Target,Contrador);
 
-La función deberá recibir una cadena con N elementos y un Target a buscar,
-devolverá el número de veces que Target se repite en la misma.*/ 
+	}
+
 	return = 0;
 }
 
