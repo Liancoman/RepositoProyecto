@@ -8,6 +8,11 @@ typedef unsigned int uint32;
 #define ASCII_HIGH_THRESHOLD_OFF_ON 123
 #define ASCII_LOW_THRESHOLD_OFF_ON 96
 #define ASCII_CONVERTION_FACTOR 32
+#define FOR_START 0
+#define FOR_END 17
+#define Variable_For_One 0
+#define Contrador 0
+
 
 /*Functions Prototypes*/ 
 

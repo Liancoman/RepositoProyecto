@@ -1,5 +1,7 @@
 #include "stdio.h"
 #include "GENFUN.h"
+#include "stdlib.h"
+
 
 void main(void)
 {
@@ -61,7 +63,21 @@ devolverá el número de veces que Target se repite en la misma.*/
 
 uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList)
 {
-	return = 0;
+ 
+    printf("\nLa función hará el promedio de letras en el au8array\n");
+    for (Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One++) 
+    {    
+            if ( au8array[Variable_For_One] == *pu8Src )
+            {
+                Contrador++;
+            }
+            else
+			{
+				/*Nothing to do*/
+			}   
+    	printf("\nLa letra %c se repite: %d veces.",au8array[Variable_For_One], Contrador);        
+    }
+	return 0;
 }
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
