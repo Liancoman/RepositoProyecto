@@ -6,12 +6,28 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
-	printf("Funcion Get On \n");
-	printf("Before CapsOn: %s\n", au8array);
-	GENFUN_vCapsOn (&au8array[0], 18);
-	printf("After CapsOn: %s\n", au8array);
-	printf("Funcion Get Off \n");
+
+	printf("Funcion CapsOn \n");
+		printf("Before CapsOn: %s\n", au8array);
+		GENFUN_vCapsOn (&au8array[0], 18);
+		printf("After CapsOn: %s\n", au8array);
 	
+	printf("Funcion CapsOff \n");
+		printf("Before CapsOff: %s\n", au8array);
+		GENFUN_vCapsOn (&au8array[0], 18);
+		printf("After CapsOff: %s\n", au8array);
+
+	printf("Funcion GetOccurence \n");
+		printf("Before GetOccurence: %s\n", au8array);
+		uint32 = GENFUN_u8GetOccurence(&au8array[0], 18);
+		printf("After GetOccurence: %s\n", au8array);
+
+	printf("Funcion GetAverage \n");
+		printf("Before GetAverage: %s\n", au8array);
+		uint32 = GENFUN_u8GetAverage(&au8array[0], 18);
+		printf("After GetAverage: %s\n", au8array);
+
+
 }
 
 void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList)
