@@ -11,17 +11,14 @@ typedef unsigned char u8Target;
 #define ASCII_CONVERTION_FACTOR 32
 #define FOR_START 0
 #define FOR_END 17
-#define Variable_For_One 0
-#define Contrador 0
-
 
 /*Functions Prototypes*/ 
 
 void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList) ;
 void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList) ;
 
-uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) ;
-uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList); 
+uint32 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) ;
+uint32 GENFUN_u8GetAverage (uint8 au8array[],uint8 *pu8Src, uint8 u8SizeOfList); 
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) ;
 void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) ;

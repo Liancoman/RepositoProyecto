@@ -6,7 +6,7 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
-
+	
 	printf("Funcion CapsOn \n");
 		printf("Before CapsOn: %s\n", au8array);
 		GENFUN_vCapsOn (&au8array[0], 18);
@@ -19,12 +19,12 @@ void main(void)
 
 	printf("Funcion GetOccurence \n");
 		printf("Before GetOccurence: %s\n", au8array);
-		uint32 = GENFUN_u8GetOccurence(&au8array[0], 18);
+		//GENFUN_u8GetOccurence(&au8array[0], 18);
 		printf("After GetOccurence: %s\n", au8array);
 
 	printf("Funcion GetAverage \n");
 		printf("Before GetAverage: %s\n", au8array);
-		uint32 = GENFUN_u8GetAverage(&au8array[0], 18);
+		//GENFUN_u8GetAverage(&au8array[0], 18);
 		printf("After GetAverage: %s\n", au8array);
 
 
@@ -64,18 +64,20 @@ void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 	}
 }
 
-uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
+uint32 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
 {
 	while ( u8SizeOfList != 0)
 	{
+		int Variable;
+		int Contrador;
 		printf("¿Que letra desea busscar?\n");
 		scanf ( " %c\n", &u8Target ); 
-		for ( Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One ++ )
+		for ( Variable = FOR_START ; Variable<FOR_END ; Variable++ )
 		{
 			if ( *pu8Src >= ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src <= ASCII_HIGH_THRESHOLD_OFF_ON )
 			{
 				if( u8Target == *pu8Src)
-				Contrador ++;
+				Contrador++;
 			}
 			else
 			{
@@ -86,16 +88,17 @@ uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList)
 
 	}
 
-	return = 0;
+	return 0;
 }
 
-uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList)
+uint32 GENFUN_u8GetAverage (uint8 au8array[],uint8 *pu8Src, uint8 u8SizeOfList)
 {
- 
+ 	int Variable;
+	int Contrador;
     printf("\nLa función hará el promedio de letras en el au8array\n");
-    for (Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One++) 
+    for (Variable=FOR_START ; Variable<FOR_END ; Variable++) 
     {    
-            if ( au8array[Variable_For_One] == *pu8Src )
+            if ( au8array[Variable] == *pu8Src )
             {
                 Contrador++;
             }
@@ -103,7 +106,7 @@ uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList)
 			{
 				/*Nothing to do*/
 			}   
-    	printf("\nLa letra %c se repite: %d veces.",au8array[Variable_For_One], Contrador);        
+    	printf("\nLa letra %c se repite: %d veces.",au8array[Variable], Contrador);        
     }
 	return 0;
 }
@@ -122,12 +125,7 @@ del segundo parámetro. */
 
 void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
 {
-/*  Parámetros: 
--pu8Src: Apuntador que recibe la dirección de la cadena. 
--pu8Dest: Apuntador que contiene la dirección de la cadena destino. 
--u8SizeOfList: Número de elementos de la cadena. 
-Retorno: N/A 
-
+/* 
 La función deberá recibir la dirección de dos arreglos, y copiar la información 
 de uno al otro.*/ 
 }
