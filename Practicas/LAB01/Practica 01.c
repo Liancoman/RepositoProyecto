@@ -21,14 +21,14 @@ void main(void)
 
 	printf("Funcion GetOccurence \n");
 		printf("¿Que letra desea busscar?\n");
-		scanf ("%s",u8Target );
-		saveocurrence= GENFUN_u8GetOccurence(&au8array[0],u8Target, 18);
-		printf("La letra %s se repite %d\n", u8Target,saveocurrence);
+		scanf ("%c",&u8Target );
+		saveocurrence= GENFUN_u8GetOccurence(&au8array[0], u8Target, 18);
+		printf("La letra %c se repite %d\n", u8Target,saveocurrence);
 
-	printf("Funcion GetAverage \n");
-		printf("Before GetAverage: %s\n", au8array);
+	//printf("Funcion GetAverage \n");
+		//printf("Before GetAverage: %s\n", au8array);
 		//GENFUN_u8GetAverage(&au8array[0], 18);
-		printf("After GetAverage: %s\n", au8array);
+		//printf("After GetAverage: %s\n", au8array);
 
 
 }
@@ -69,22 +69,21 @@ void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 
 uint32 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
 {
-	int Variable=0;
 	int Contrador=0;
 	
-	for ( Variable = FOR_START ; Variable <= u8SizeOfList ; Variable++ )
+	while( u8SizeOfList != 0 )
 	{
-		
-		if( u8Target == *pu8Src)
+		if( *pu8Src == u8Target )
 		{
-				Contrador++;
+			Contrador++;
 		}
 		else
 		{
-				//nothing to do
+
 		}
+		u8SizeOfList--;
+		pu8Src++;
 	}
-	
 
 	return Contrador;
 }
