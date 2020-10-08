@@ -113,14 +113,13 @@ uint32 GENFUN_u8GetAverage (uint8 au8array[],uint8 *pu8Src, uint8 u8SizeOfList)
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
 {
-/*  Parámetros: 
--pu8Src: Apuntador que recibe la dirección de la cadena. 
--u8Char2Set: Carácter a escribir en la cadena. 
--u8SizeOfList: Número de elementos de la cadena. 
-Retorno: N/A 
+	printf("\nLa funcion Taera la primer lista y cambiara a la segunda\n Escriba el siguiente parametro\n");
+	scanf ("%s\n" &u8Char2Set[]);
+	for ( Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One++ )
+	{
+		
+	}
 
-La función deberá recibir la dirección de un arreglo y llenarlo con el elemento
-del segundo parámetro. */
 }
 
 void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
