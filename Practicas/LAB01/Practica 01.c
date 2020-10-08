@@ -6,7 +6,9 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
-	
+	uint8 saveocurrence;
+	uint8 u8Target;
+
 	printf("Funcion CapsOn \n");
 		printf("Before CapsOn: %s\n", au8array);
 		GENFUN_vCapsOn (&au8array[0], 18);
@@ -14,13 +16,14 @@ void main(void)
 	
 	printf("Funcion CapsOff \n");
 		printf("Before CapsOff: %s\n", au8array);
-		GENFUN_vCapsOn (&au8array[0], 18);
+		GENFUN_vCapsOff (&au8array[0], 18);
 		printf("After CapsOff: %s\n", au8array);
 
 	printf("Funcion GetOccurence \n");
-		printf("Before GetOccurence: %s\n", au8array);
-		//GENFUN_u8GetOccurence(&au8array[0], 18);
-		printf("After GetOccurence: %s\n", au8array);
+		printf("¿Que letra desea busscar?\n");
+		scanf ("%s",u8Target );
+		saveocurrence= GENFUN_u8GetOccurence(&au8array[0],u8Target, 18);
+		printf("La letra %s se repite %d\n", u8Target,saveocurrence);
 
 	printf("Funcion GetAverage \n");
 		printf("Before GetAverage: %s\n", au8array);
@@ -66,35 +69,30 @@ void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 
 uint32 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
 {
-	while ( u8SizeOfList != 0)
+	int Variable=0;
+	int Contrador=0;
+	
+	for ( Variable = FOR_START ; Variable <= u8SizeOfList ; Variable++ )
 	{
-		int Variable;
-		int Contrador;
-		printf("¿Que letra desea busscar?\n");
-		scanf ( " %c\n", &u8Target ); 
-		for ( Variable = FOR_START ; Variable<FOR_END ; Variable++ )
+		
+		if( u8Target == *pu8Src)
 		{
-			if ( *pu8Src >= ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src <= ASCII_HIGH_THRESHOLD_OFF_ON )
-			{
-				if( u8Target == *pu8Src)
 				Contrador++;
-			}
-			else
-			{
-				//nothing to do
-			}
 		}
-		printf("La letra %c se repite %d\n", u8Target,Contrador);
-
+		else
+		{
+				//nothing to do
+		}
 	}
+	
 
-	return 0;
+	return Contrador;
 }
 
 uint32 GENFUN_u8GetAverage (uint8 au8array[],uint8 *pu8Src, uint8 u8SizeOfList)
 {
- 	int Variable;
-	int Contrador;
+ 	uint32 Variable;
+	uint32 Contrador;
     printf("\nLa función hará el promedio de letras en el au8array\n");
     for (Variable=FOR_START ; Variable<FOR_END ; Variable++) 
     {    
@@ -113,12 +111,12 @@ uint32 GENFUN_u8GetAverage (uint8 au8array[],uint8 *pu8Src, uint8 u8SizeOfList)
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
 {
-	printf("\nLa funcion Taera la primer lista y cambiara a la segunda\n Escriba el siguiente parametro\n");
-	scanf ("%s\n" &u8Char2Set[]);
-	for ( Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One++ )
-	{
+	//printf("\nLa funcion Taera la primer lista y cambiara a la segunda\n Escriba el siguiente parametro\n");
+	//scanf ("%s\n" &u8Char2Set[]);
+	//for ( Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One++ )
+	//{
 		
-	}
+	//}
 
 }
 
