@@ -12,7 +12,7 @@ typedef unsigned char u8Target;
 #define ASCII_LOW_THRESHOLD_OFF_ON_2 64
 #define ASCII_CONVERTION_FACTOR 32
 #define END_SOFT 255
-#define END_SOFT_2 127
+#define END_SOFT_2 254
 #define ValZero 0
 
 /*Functions Prototypes*/ 
