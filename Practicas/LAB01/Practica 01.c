@@ -31,23 +31,22 @@ void main(void)
 		scanf ("%c",&u8Target );
 		saveocurrence= GENFUN_u8GetOccurence(&au8array[0], u8Target, 18);
 		printf("La letra %c se repite %d\n", u8Target,saveocurrence);
-
-	printf("Funcion MemSet\n");
-		u8Target= 'w' ;
-		printf("Before MemSet: %s\n", au8array);
-		printf("¿Que caracter desea en la nueva lista?\n");
-		//scanf ("%c\n",  &u8Char2Set);
-		GENFUN_u8MemSet (&au8array[0], u8Target, 18);
-		printf("La nueva cadena es %s\n", au8array);
+		printf("\n");
 
 	printf("\n		Funcion GetAverage \n");
 		printf("La funcion Average dara el promedio obtenido de la cadena siguiente:");
 		for(i=0;i<7;i++){printf(" %d ",au8arraynum[i]);	}
 		printf("\n");
 		saveoaverage=GENFUN_u8GetAverage(&au8arraynum[0],7);
-		printf("\nEl promedio obtenido es : %d",saveoaverage);
+		printf("\nEl promedio obtenido es : %d",saveoaverage);	
 
-	printf("\n		Funcion MemCopy \n");
+	printf("\n		Funcion MemSet\n");
+		u8Target= 'w' ;
+		printf("Before MemSet: %s\n", au8array);
+		GENFUN_u8MemSet (&au8array[0], u8Target, 18);
+		printf("La nueva cadena es %s",au8array);
+
+	printf("\n\n		Funcion MemCopy \n");
 		printf("La funcion MemCopy copiara los valores de la cadena siguiente y estos seran asignados a una cadena diferente:");
 		for(i=0;i<7;i++){printf(" %d ",au8arraynum[i]);	}
 		printf("\nLa cadena vacia es la siguinete: ");
@@ -57,7 +56,7 @@ void main(void)
 		printf("\n Ya se se realizo la funcion MemCopy y el resultado es el siguiente : ");
 		for(i=0;i<7;i++){printf(" %d ",au8arraynum2[i]);}
 
-	printf("\n		Funcion SoftSignal \n");
+	printf("\n\n		Funcion SoftSignal \n");
 	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);		
 }
 
@@ -82,7 +81,7 @@ void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 {
 	while ( u8SizeOfList != 0 )
 	{
-		if( *pu8Src > ASCII_LOW_THRESHOLD_OFF_ON && *pu8Src < ASCII_HIGH_THRESHOLD_OFF_ON)
+		if( *pu8Src > ASCII_LOW_THRESHOLD_OFF_ON_2 && *pu8Src < ASCII_HIGH_THRESHOLD_OFF_ON_2)
 		{
 			*pu8Src += ASCII_CONVERTION_FACTOR;
 		}
@@ -136,8 +135,8 @@ void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList)
 	{
 		*pu8Src = u8Char2Set;
 		u8SizeOfList--;
+		pu8Src++;	
 	}
-		pu8Src++;
 }
 
 void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
