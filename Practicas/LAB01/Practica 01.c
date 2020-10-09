@@ -13,8 +13,10 @@ void main(void)
 	uint8 au8arraynum2[7]={0,0,0,0,0,0,0};
 	uint32 au32arraynum[255];
 	uint32 au32arraynum2[255];
+	uint8 au8Disorder[10] = {5,9,7,2,1,0,3,5,4,7};
+	uint8 au8Aux[10];
 	uint32 saveoaverage;
-	uint8 i;
+	uint8 i, i2;
 
 	printf("\n		Funcion CapsOn \n");
 		printf("Before CapsOn: %s\n", au8array);
@@ -55,6 +57,13 @@ void main(void)
 		GENFUN_u8MemCopy(&au8arraynum[0],&au8arraynum2[0],7);
 		printf("\n Ya se se realizo la funcion MemCopy y el resultado es el siguiente : ");
 		for(i=0;i<7;i++){printf(" %d ",au8arraynum2[i]);}
+
+	printf("\n\n		Funcion SortList \n");
+		printf("Before SortList \n");
+		for(i2=0;i2<9;i2++){printf("%d   ", au8Disorder[i2]);}
+		GENFUN_vSortList (&au8Disorder[0], &au8Aux[0], 10 );
+		printf("After SortList\n");
+		for(i2=0;i2<9;i2++){printf("%d", au8Aux[i2]);}
 
 	printf("\n\n		Funcion SoftSignal \n");
 	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);		
@@ -152,21 +161,22 @@ void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList)
 
 void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
 {
+	 uint32 u8AuxSizeOfList = u8SizeOfList;
+	 uint32 a=0;
+
 	while ( u8SizeOfList != 0 )
 	{
-
+		while ( u8AuxSizeOfList != 0 )
+		{
+			if ( pu8Src > pu8Dest )
+			{
+				a = *pu8Dest;
+				*pu8Dest = *pu8Src;
+				*pu8Src = a;
+			}
+		}
+		u8SizeOfList--; 
 	}
-	
-//
-
-/*  Parámetros: 
--pu8Src: Apuntador que recibe la dirección de la cadena original desordenada. 
--pu8Dest: Apuntador que recibe la dirección donde se ordenara la cadena. 
--u8SizeOfList: Número de elementos de la cadena. 
-Retorno: N/A 
-
-La función deberá recibir una cadena con N elementos desordenados y reescribir
-la misma lista ordenada en la dirección indicada en orden ascendente. */
 }
 
 void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest) 
