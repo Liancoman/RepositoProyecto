@@ -177,13 +177,20 @@ void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest)
 		*pu32Src = rand() % 10;
 		indice--;
 	}
+	indice = END_SOFT;
+	uint8 prom=0,num=0;
+	printf("\n El resultado de la segunda cadena con los promedios es : ");
+	while(indice!= 0)
+	{
+		num=*pu32Src;
+		pu32Src++;
+		prom=(num+*pu32Src)/2;
+		*pu32Dest=prom;
+		printf(" %d",*pu32Dest );
+		indice--;
+		pu32Dest++;
 
-	
-/* 
-La función recibe una cadena con 255 elementos la cual se tendrá que suavizar aplicando un promedio entre los 2 
-elementos más cercanos de toda la cadena. 
-Ejemplo (Primer Elemento Destino = (Primer Elemento Fuente + Segundo Elemento
-Fuente) / 2) */
+	}
 }
 
 void GENFUN_vFilterSignal (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8MaxVal, uint8 u8MinVal) 
