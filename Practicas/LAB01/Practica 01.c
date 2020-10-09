@@ -6,7 +6,7 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
-	uint8 u8Char2Set[18];
+	uint8 u8Char2Set;
 	uint8 saveocurrence;
 	uint8 u8Target;
 
@@ -27,10 +27,11 @@ void main(void)
 		printf("La letra %c se repite %d\n", u8Target,saveocurrence);
 
 	printf("Funcion MemSet\n");
+		u8Target= 'w' ;
 		printf("Before MemSet: %s\n", au8array);
 		printf("¿Que caracter desea en la nueva lista?\n");
-		scanf ("%c\n",  &u8Char2Set);
-		GENFUN_u8MemSet (&au8array[0], u8Char2Set, 18);
+		//scanf ("%c\n",  &u8Char2Set);
+		GENFUN_u8MemSet (&au8array[0], u8Target, 18);
 		printf("La nueva cadena es %s\n", au8array);
 
 
@@ -122,15 +123,14 @@ void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList)
 	while (u8SizeOfList != 0)
 	{
 		*pu8Src = u8Char2Set;
-		printf("%c\n", *pu8Src );
-		printf("%c\n", u8Char2Set);
-		pu8Src++;
 		u8SizeOfList--;
 	}
+		pu8Src++;
 }
 
 void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
 {
+
 /* 
 La función deberá recibir la dirección de dos arreglos, y copiar la información 
 de uno al otro.*/ 
@@ -138,6 +138,13 @@ de uno al otro.*/
 
 void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
 {
+	while ( u8SizeOfList != 0 )
+	{
+
+	}
+	
+//
+
 /*  Parámetros: 
 -pu8Src: Apuntador que recibe la dirección de la cadena original desordenada. 
 -pu8Dest: Apuntador que recibe la dirección donde se ordenara la cadena. 
