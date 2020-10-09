@@ -14,6 +14,8 @@ typedef unsigned char u8Target;
 #define END_SOFT 255
 #define END_SOFT_2 254
 #define ValZero 0
+#define MinVal 2
+#define MaxVal 4
 
 /*Functions Prototypes*/ 
 
@@ -29,4 +31,4 @@ void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) ;
 void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) ;
 void GENFUN_vSoftSignal (uint32 *pu8Src, uint32 *pu8Dest) ;
 
-void GENFUN_vFilterSignal (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8MaxVal, uint8 u8MinVal) ;
+void GENFUN_vFilterSignal (uint32 *pu32Src, uint32 *pu32Dest, uint32 u32MaxVal, uint32 u32MinVal) ;

@@ -63,17 +63,20 @@ void main(void)
 		for(i2=0;i2<10;i2++)
 			{
 				printf("  %d  ", au8Disorder[i2]);
-			}
+			}			{
+
 		//GENFUN_vSortList (&au8Disorder[0], &au8Aux[0], 10 );
 
 		printf(" \nAfter SortList\n");
 		for(i2=0;i2<10;i2++)
-			{
 				printf("  %d  ", au8Aux[i2]);
 			}
 
 	printf("\n\n		Funcion SoftSignal \n");
-	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);		
+	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);	
+
+	printf("\n\n		Funcion FilterSignal \n");
+	GENFUN_vFilterSignal(&au32arraynum[0],&au32arraynum2[0],MaxVal,MinVal);
 }
 
 void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList)
@@ -231,15 +234,35 @@ void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest)
 	}
 }
 
-void GENFUN_vFilterSignal (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8MaxVal, uint8 u8MinVal) 
+void GENFUN_vFilterSignal (uint32 *pu32Src, uint32 *pu32Dest, uint32 u32MaxVal, uint32 u32MinVal) 
 {
-/*  Parámetros: 
--pu8Src: Apuntador que recibe la dirección de la cadena fuente. 
--pu8Dest: Apuntador que recibe la dirección de la cadena destino. 
--u8MaxVal: Limite Superior del Filtro. 
--u8MinVal: Límite Inferior del Filtro. 
-Retorno: N/A 
+	uint8 indice = END_SOFT;
+	uint8 indice2 = END_SOFT;
+	uint8 o=0;
+	printf("Se mostrara los valores almacenados aleatoriamente en el primer areglo con el limite menor de %d y el limite mayor de %d\n",u32MinVal,u32MaxVal);
+	u32MaxVal--;
+	while(indice!= 0)
+	{
+		*pu32Src = (u32MinVal) + (rand() % u32MaxVal);
+		*pu32Dest=o;
+		printf("  %d   ",*pu32Src);
+		indice--;
+		pu32Src++;
+		pu32Dest++;
+	}
+	pu32Src=pu32Src-255;
+	pu32Dest=pu32Dest-1;
 
-La función deberá recibir una cadena con 255 elementos (simulando un grafica
-numérica) la cual se tendrá que filtrar en la cadena destino con los limites otorgados.*/ 
+	printf("\n Se guardaran los resultados en otra cadena distinta : \n");
+	
+	while(indice2 != 0)
+	{
+		o = *pu32Src;
+		*pu32Dest=o;
+		pu32Src++;
+		pu32Dest++;
+		printf("  %d   ",*pu32Dest );
+		indice2--;
+	}
+
 }
