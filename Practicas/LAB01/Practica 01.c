@@ -6,6 +6,7 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
+	uint8 u8Char2Set[18];
 	uint8 saveocurrence;
 	uint8 u8Target;
 
@@ -24,6 +25,14 @@ void main(void)
 		scanf ("%c",&u8Target );
 		saveocurrence= GENFUN_u8GetOccurence(&au8array[0], u8Target, 18);
 		printf("La letra %c se repite %d\n", u8Target,saveocurrence);
+
+	printf("Funcion MemSet\n");
+		printf("Before MemSet: %s\n", au8array);
+		printf("¿Que caracter desea en la nueva lista?\n");
+		scanf ("%c\n",  &u8Char2Set);
+		GENFUN_u8MemSet (&au8array[0], u8Char2Set, 18);
+		printf("La nueva cadena es %s\n", au8array);
+
 
 	//printf("Funcion GetAverage \n");
 		//printf("Before GetAverage: %s\n", au8array);
@@ -110,13 +119,14 @@ uint32 GENFUN_u8GetAverage (uint8 au8array[],uint8 *pu8Src, uint8 u8SizeOfList)
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
 {
-	//printf("\nLa funcion Taera la primer lista y cambiara a la segunda\n Escriba el siguiente parametro\n");
-	//scanf ("%s\n" &u8Char2Set[]);
-	//for ( Variable_For_One = FOR_START ; Variable_For_One < FOR_END ; Variable_For_One++ )
-	//{
-		
-	//}
-
+	while (u8SizeOfList != 0)
+	{
+		*pu8Src = u8Char2Set;
+		printf("%c\n", *pu8Src );
+		printf("%c\n", u8Char2Set);
+		pu8Src++;
+		u8SizeOfList--;
+	}
 }
 
 void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
