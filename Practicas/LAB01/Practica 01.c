@@ -12,7 +12,7 @@ void main(void)
 	uint8 au8arraynum[7]={2,4,2,4,8,7,4};
 	uint8 au8arraynum2[7]={0,0,0,0,0,0,0};
 	uint32 au32arraynum[255];
-	uint32 au32arraynum2[254];
+	uint32 au32arraynum2[255];
 	uint32 saveoaverage;
 	uint8 i;
 
@@ -40,8 +40,8 @@ void main(void)
 		saveoaverage=GENFUN_u8GetAverage(&au8arraynum[0],7);
 		printf("\nEl promedio obtenido es : %d",saveoaverage);	
 
-	printf("\n		Funcion MemSet\n");
-		u8Target= 'w' ;
+	printf("\n\n		Funcion MemSet\n");
+		u8Target='w';
 		printf("Before MemSet: %s\n", au8array);
 		GENFUN_u8MemSet (&au8array[0], u8Target, 18);
 		printf("La nueva cadena es %s",au8array);
@@ -172,22 +172,29 @@ la misma lista ordenada en la dirección indicada en orden ascendente. */
 void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest) 
 {
 	uint8 indice = END_SOFT;
+	uint8 indice2 = END_SOFT_2;
+	uint8 prom=0,num=0,sum=0;
+	
+	printf("Se mostrara los valores almacenados aleatoriamente en el primer areglo: \n");
 	while(indice!= 0)
 	{
 		*pu32Src = rand() % 10;
+		printf("  %d   ",*pu32Src);
 		indice--;
-	}
-	indice = END_SOFT;
-	uint8 prom=0,num=0;
-	printf("\n El resultado de la segunda cadena con los promedios es : ");
-	while(indice!= 0)
-	{
-		num=*pu32Src;
 		pu32Src++;
-		prom=(num+*pu32Src)/2;
+	}
+	pu32Src=pu32Src-255;
+	printf("\n El resultado de la segunda cadena con los promedios es : \n");
+	
+	while(indice2 != 0)
+	{
+		num = *pu32Src;
+		pu32Src++;
+		sum=(num+*pu32Src);
+		prom=(sum/2);
 		*pu32Dest=prom;
-		printf(" %d",*pu32Dest );
-		indice--;
+		printf("  %d   ",*pu32Dest );
+		indice2--;
 		pu32Dest++;
 
 	}
