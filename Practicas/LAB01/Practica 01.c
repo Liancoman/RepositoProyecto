@@ -58,19 +58,25 @@ void main(void)
 		printf("\n Ya se se realizo la funcion MemCopy y el resultado es el siguiente : ");
 		for(i=0;i<7;i++){printf(" %d ",au8arraynum2[i]);}
 
-	printf("\n\n		Funcion SortList \n");
+	/*printf("\n\n		Funcion SortList \n");
 		printf("Before SortList \n");
 		for(i2=0;i2<10;i2++)
 			{
 				printf("  %d  ", au8Disorder[i2]);
-			}			{
+			}*/
 
 		//GENFUN_vSortList (&au8Disorder[0], &au8Aux[0], 10 );
 
 		printf(" \nAfter SortList\n");
 		for(i2=0;i2<10;i2++)
+		{
 				printf("  %d  ", au8Aux[i2]);
-			}
+		
+		}
+		printf(" \nBefore SortList\n");
+		GENFUN_vSortList ( &au8Disorder[0], au8Aux[0], 10);
+		printf("Afteer Sort %d\n", au8Disorder[i2]);
+
 
 	printf("\n\n		Funcion SoftSignal \n");
 	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);	
@@ -171,36 +177,32 @@ void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList)
 
 void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
 {
-	/*uint8 a=0;
-	uint8 b=0;
-	uint8 i=0;
-	uint8 n=0;
-	uint8 x=0;
-	uint8 e=0;
-	uint8 w=1;
+	uint8 u8SizeOfList2 = u8SizeOfList;
+	uint8 Aux[10], TempAux;
+	while ( u8SizeOfList !=0 )
+	{
+		pu8Dest = pu8Src;
+		pu8Dest ++;
+		while ( u8SizeOfList2 != 0 )
+		{
 
-	printf("\nSe modificara el orden de la cadena y se ordenara de mayor a menor\n");
-    for(i=0;i<u8SizeOfList;i++)
-    {	
-    	e=pu8Src+w;
-    	a= *pu8Src;
-    	pu8Src++;	
-        for(x=i+1;x<u8SizeOfList;x++)
-        {
-        	b=*pu8Src;
-        	pu8Src++;
-            if(b>a) 
-            {
-                n=b;	
-                *pu8Dest=b;
-                pu8Dest++;
-                pu8Src-=u8SizeOfList;
-                w++;
-            }
-        }
-    }
-	*/
+			if ( *pu8Src < *Aux )
+			{
+				TempAux = *pu8Src;
+				*pu8Src = *pu8Dest; 
+				*pu8Dest = TempAux;
+			}
+			else
+			{
+				pu8Dest ++;
+				u8SizeOfList2++;
+			}
+			u8SizeOfList--;
+		}		
+		pu8Src ++;
 
+		
+	}
 }
 
 void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest) 
