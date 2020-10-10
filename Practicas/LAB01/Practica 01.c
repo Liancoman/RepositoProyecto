@@ -58,16 +58,11 @@ void main(void)
 	printf("\n\n		Funcion SortList \n");
 		printf(" \nBefore SortList\n");
 		for(u8For=0;u8For<10;u8For++)
-		{
-		printf(" %d  ", au8Disorder[u8For]);
-		}
+		{printf(" %d  ", au8Disorder[u8For]);}
 		GENFUN_vSortList( &au8Disorder[0], &au8Aux[0], 10);
-		
 		printf(" \nAfter SortList\n");
 		for(u8For=0;u8For<10;u8For++)
-		{
-		printf(" %d  ", au8Disorder[u8For]);
-		}
+		{printf(" %d  ", au8Disorder[u8For]);}
 
 	printf("\n\n		Funcion SoftSignal \n");
 	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);	
@@ -181,17 +176,14 @@ void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList)
                 au8arraynum3[u8Fori]=au8arraynum3[u8Forx];		 
                 au8arraynum3[u8Forx]=au8ContPiv;				 
             }
-            else
-            {
-            	/*Nothing to do*/
-            }          					
+            else{/*Nothing to do*/}          					
         }
-        for(u8Fori=0;u8Fori<u8SizeOfList;u8Fori++)
+    }
+    for(u8Fori=0;u8Fori<u8SizeOfList;u8Fori++)
         {
         	*pu8Src=au8arraynum3[u8Fori];
         	pu8Src++;
-        }      
-    }
+        }  
 }
 
 void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest) 
