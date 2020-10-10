@@ -16,6 +16,7 @@ typedef unsigned char u8Target;
 #define ValZero 0
 #define MinVal 2
 #define MaxVal 4
+#define Array_nums {0,9,2,3,4,5,6,4,8,9}
 
 /*Functions Prototypes*/ 
 

@@ -6,17 +6,14 @@
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
-	uint8 u8Char2Set;
-	uint8 saveocurrence;
-	uint8 u8Target;
+	uint8 u8Char2Set,u8SaveToOcurrence,u8Target,u8For;
 	uint8 au8arraynum[7]={2,4,2,4,8,7,4};
 	uint8 au8arraynum2[7]={0,0,0,0,0,0,0};
 	uint32 au32arraynum[255];
 	uint32 au32arraynum2[255];
-	uint8 au8Disorder[10] = {5,9,7,2,1,0,3,5,4,7};
-	uint8 au8Aux[10];
-	uint32 saveoaverage;
-	uint8 i, i2;
+	uint8 au8Disorder[10] = Array_nums;
+	uint8 au8Aux[10]={0,0,0,0,0,0,0,0,0,0};
+	uint32 u32SaveToAverage;
 
 	printf("\n		Funcion CapsOn \n");
 		printf("Before CapsOn: %s\n", au8array);
@@ -31,16 +28,16 @@ void main(void)
 	printf("\n		Funcion GetOccurence \n");
 		printf("¿Que letra desea busscar?\n");
 		scanf ("%c",&u8Target );
-		saveocurrence= GENFUN_u8GetOccurence(&au8array[0], u8Target, 18);
-		printf("La letra %c se repite %d\n", u8Target,saveocurrence);
+		u8SaveToOcurrence= GENFUN_u8GetOccurence(&au8array[0], u8Target, 18);
+		printf("La letra %c se repite %d\n", u8Target,u8SaveToOcurrence);
 		printf("\n");
 
 	printf("\n		Funcion GetAverage \n");
 		printf("La funcion Average dara el promedio obtenido de la cadena siguiente:");
-		for(i=0;i<7;i++){printf(" %d ",au8arraynum[i]);	}
+		for(u8For=0;u8For<7;u8For++){printf(" %d ",au8arraynum[u8For]);	}
 		printf("\n");
-		saveoaverage=GENFUN_u8GetAverage(&au8arraynum[0],7);
-		printf("\nEl promedio obtenido es : %d",saveoaverage);	
+		u32SaveToAverage=GENFUN_u8GetAverage(&au8arraynum[0],7);
+		printf("\nEl promedio obtenido es : %d",u32SaveToAverage);	
 
 	printf("\n\n		Funcion MemSet\n");
 		u8Target='w';
@@ -50,33 +47,27 @@ void main(void)
 
 	printf("\n\n		Funcion MemCopy \n");
 		printf("La funcion MemCopy copiara los valores de la cadena siguiente y estos seran asignados a una cadena diferente:");
-		for(i=0;i<7;i++){printf(" %d ",au8arraynum[i]);	}
+		for(u8For=0;u8For<7;u8For++){printf(" %d ",au8arraynum[u8For]);	}
 		printf("\nLa cadena vacia es la siguinete: ");
-		for(i=0;i<7;i++){printf(" %d ",au8arraynum2[i]);}
+		for(u8For=0;u8For<7;u8For++){printf(" %d ",au8arraynum2[u8For]);}
 		printf("\n");
 		GENFUN_u8MemCopy(&au8arraynum[0],&au8arraynum2[0],7);
 		printf("\n Ya se se realizo la funcion MemCopy y el resultado es el siguiente : ");
-		for(i=0;i<7;i++){printf(" %d ",au8arraynum2[i]);}
+		for(u8For=0;u8For<7;u8For++){printf(" %d ",au8arraynum2[u8For]);}
 
-	/*printf("\n\n		Funcion SortList \n");
-		printf("Before SortList \n");
-		for(i2=0;i2<10;i2++)
-			{
-				printf("  %d  ", au8Disorder[i2]);
-			}*/
-
-		//GENFUN_vSortList (&au8Disorder[0], &au8Aux[0], 10 );
-
-		printf(" \nAfter SortList\n");
-		for(i2=0;i2<10;i2++)
-		{
-				printf("  %d  ", au8Aux[i2]);
-		
-		}
+	printf("\n\n		Funcion SortList \n");
 		printf(" \nBefore SortList\n");
-		GENFUN_vSortList ( &au8Disorder[0], au8Aux[0], 10);
-		printf("Afteer Sort %d\n", au8Disorder[i2]);
-
+		for(u8For=0;u8For<10;u8For++)
+		{
+		printf(" %d  ", au8Disorder[u8For]);
+		}
+		GENFUN_vSortList( &au8Disorder[0], &au8Aux[0], 10);
+		
+		printf(" \nAfter SortList\n");
+		for(u8For=0;u8For<10;u8For++)
+		{
+		printf(" %d  ", au8Disorder[u8For]);
+		}
 
 	printf("\n\n		Funcion SoftSignal \n");
 	GENFUN_vSoftSignal (&au32arraynum[0], &au32arraynum2[0]);	
@@ -121,37 +112,37 @@ void GENFUN_vCapsOff (uint8 *pu8Src, uint8 u8SizeOfList)
 
 uint8 GENFUN_u8GetOccurence (uint8 *pu8Src, uint8 u8Target, uint8 u8SizeOfList) 
 {
-	int Contrador=0;
+	uint8 u8Contrador=0;
 	
 	while( u8SizeOfList != 0 )
 	{
 		if( *pu8Src == u8Target )
 		{
-			Contrador++;
+			u8Contrador++;
 		}
 		else
 		{
-
+			/*Nothing to do*/
 		}
 		u8SizeOfList--;
 		pu8Src++;
 	}
 
-	return Contrador;
+	return u8Contrador;
 }
 
 uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList)
 {
-	uint32 Sumadevalores=0;
-	uint8 div=u8SizeOfList;
+	uint32 u32Sumadevalores=0;
+	uint8 u8divSumadevalores=u8SizeOfList;
 	while ( u8SizeOfList != 0 )
 	{
-		Sumadevalores+= *pu8Src;
+		u32Sumadevalores+= *pu8Src;
 		pu8Src++;
 		u8SizeOfList--;
 	}
-	Sumadevalores/=div; 
-	return Sumadevalores;
+	u32Sumadevalores/=u8divSumadevalores; 
+	return u32Sumadevalores;
 }
 
 void GENFUN_u8MemSet (uint8 *pu8Src, uint8 u8Char2Set, uint8 u8SizeOfList) 
@@ -177,60 +168,58 @@ void GENFUN_u8MemCopy (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList)
 
 void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList) 
 {
-	uint8 u8SizeOfList2 = u8SizeOfList;
-	uint8 Aux[10], TempAux;
-	while ( u8SizeOfList !=0 )
-	{
-		pu8Dest = pu8Src;
-		pu8Dest ++;
-		while ( u8SizeOfList2 != 0 )
-		{
+	uint8 au8ContPiv,u8Fori,u8Forx;
+    uint8 au8arraynum3[10]= Array_nums;
 
-			if ( *pu8Src < *Aux )
-			{
-				TempAux = *pu8Src;
-				*pu8Src = *pu8Dest; 
-				*pu8Dest = TempAux;
-			}
-			else
-			{
-				pu8Dest ++;
-				u8SizeOfList2++;
-			}
-			u8SizeOfList--;
-		}		
-		pu8Src ++;
-
-		
-	}
+    for(u8Fori=0;u8Fori<=u8SizeOfList;u8Fori++)
+    {	
+        for(u8Forx=u8Fori+1;u8Forx<=u8SizeOfList-1;u8Forx++)	
+        {
+            if(au8arraynum3[u8Fori]>au8arraynum3[u8Forx])		
+            {
+                au8ContPiv=au8arraynum3[u8Fori];				
+                au8arraynum3[u8Fori]=au8arraynum3[u8Forx];		 
+                au8arraynum3[u8Forx]=au8ContPiv;				 
+            }
+            else
+            {
+            	/*Nothing to do*/
+            }          					
+        }
+        for(u8Fori=0;u8Fori<u8SizeOfList;u8Fori++)
+        {
+        	*pu8Src=au8arraynum3[u8Fori];
+        	pu8Src++;
+        }      
+    }
 }
 
 void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest) 
 {
-	uint8 indice = END_SOFT;
-	uint8 indice2 = END_SOFT_2;
-	uint8 prom=0,num=0,sum=0;
+	uint8 u8indice = END_SOFT;
+	uint8 u8indice2 = END_SOFT_2;
+	uint8 u8Prom=0,u8num=0,u8sum=0;
 	
 	printf("Se mostrara los valores almacenados aleatoriamente en el primer areglo: \n");
-	while(indice!= 0)
+	while(u8indice!= 0)
 	{
 		*pu32Src = rand() % 10;
 		printf("  %d   ",*pu32Src);
-		indice--;
+		u8indice--;
 		pu32Src++;
 	}
 	pu32Src=pu32Src-255;
 	printf("\n El resultado de la segunda cadena con los promedios es : \n");
 	
-	while(indice2 != 0)
+	while(u8indice2 != 0)
 	{
-		num = *pu32Src;
+		u8num = *pu32Src;
 		pu32Src++;
-		sum=(num+*pu32Src);
-		prom=(sum/2);
-		*pu32Dest=prom;
+		u8sum=(u8num+*pu32Src);
+		u8Prom=(u8sum/2);
+		*pu32Dest=u8Prom;
 		printf("  %d   ",*pu32Dest );
-		indice2--;
+		u8indice2--;
 		pu32Dest++;
 
 	}
