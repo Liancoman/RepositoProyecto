@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h> 
 
+/*Nota 90*/
 void main(void)
 {
 	uint8 au8array[18]= "equipochavezgarcia";
@@ -217,7 +218,8 @@ void GENFUN_vSoftSignal (uint32 *pu32Src, uint32 *pu32Dest)
 	}
 }
 
-void GENFUN_vFilterSignal (uint32 *pu32Src, uint32 *pu32Dest, uint32 u32MaxVal, uint32 u32MinVal) 
+
+void GENFUN_vFilterSignal (uint32 *pu32Src, uint32 *pu32Dest, uint32 u32MaxVal, uint32 u32MinVal) /*Esta funcion esta mal*/
 {
 	uint8 indice = END_SOFT;
 	uint8 indice2 = END_SOFT;
