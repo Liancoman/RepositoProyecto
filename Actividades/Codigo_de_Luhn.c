@@ -14,7 +14,7 @@ void main(void)
 	u8Check=u8LuhunCheck(&au8arraynum[0],16);
 
 	//2do Comparamos si es o no es Valida
-	if(u8Check==0)		//0 para correcto, otro para incorrecto
+	if(u8Check==1)		//0 para correcto, otro para incorrecto
 	{
 		//Le diremos que es valida la tarjeta entonces le mostramosel número de tarjeta 
 		printf("Tarjeta Valida.\nSe le Mostrara los numeros de la tarjeta: ");
@@ -31,11 +31,11 @@ void main(void)
 
 uint8 u8LuhunCheck(uint8 *pu8Data,uint8 u8SizeOfList)
 {
-	uint8 u8SaveNum=0,u8StartOfWhile=0,u8SumTotal=0,u8ModTotal=0,u8SaveToEnd=0,validacion=0; 	
+	uint8 u8SaveNum=0,u8StartOfWhile=0,u8SumTotal=0,u8ModTotal=0,validacion=0; 	
 	
-	while( u8StartOfWhile<= u8SizeOfList )
+	while( u8StartOfWhile <= u8SizeOfList )
 	{
-		u8SaveToEnd=*pu8Data;
+		
 		if( u8StartOfWhile % 2 == 0 )
 		{
 			u8SaveNum= (*pu8Data)*2;			//savenum = 4
@@ -55,11 +55,12 @@ uint8 u8LuhunCheck(uint8 *pu8Data,uint8 u8SizeOfList)
 		u8SumTotal=u8SaveNum+u8SumTotal;
 		u8StartOfWhile++;
 		pu8Data++;
+		
 	}
-	u8SumTotal=u8SumTotal-5;
-	u8ModTotal= u8SumTotal%10;
-
-	if(u8ModTotal==u8SaveToEnd)
+	//printf(" %d ",u8SumTotal );
+	u8ModTotal=u8SumTotal%10;
+	//printf(" %d ",u8ModTotal );
+	if(u8ModTotal==0)
 	{
 		validacion=1;
 	}
