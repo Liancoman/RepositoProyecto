@@ -5,6 +5,8 @@
 /* Descripcion 
 -->Se tiene que usar un arreglo de estructuras para manejar los estacionamientos, la estructura es la de abajo.
 */
+
+//Estructura 	VariableArreglo [ultimo enum] = define estructura
 tstParkingInfo astMyParks[enMaxSectors] = INIT_PARKING_SLOTS;
 /*
 ->El programa correra en un ciclo infinito y habra funciones aleatorias que metan y saquen carros de las 
@@ -22,7 +24,9 @@ diferentes secciones.
 void main ( void )
 {
 	uint8 u8InputAction = 0;
-	tenParkingSectors enSector; 
+	//dipo de enum verde  variable = 1er Enum
+	tenParkingSectors enSector = enSector0; 
+
 	uint8 u8ConfirmationFromAction = 0;
 	while(1)
 	{
@@ -75,7 +79,7 @@ void main ( void )
 		{
 			printf("\nNo se seleccionó la opción correcta.\n\n\n");
 		}
-		system(cls);
+		//system(cls);
 	}
 }
 
@@ -83,7 +87,26 @@ void main ( void )
  de estacionamiento (0, 1, 2, 3 o 4) e imprima la cantidad de espacios disponibles de esa seccion*/
 void ShowAvailableSlots ( tenParkingSectors enCurrentSector )
 {
-	printf("\nSe selecciono el sector %d",enCurrentSector);
+	if(enCurrentSector==0)
+	{
+		
+	}
+	else if (enCurrentSector==1)
+	{
+
+	}
+	else if (enCurrentSector==2)
+	{
+		
+	}
+	else if (enCurrentSector==3)
+	{
+		
+	}
+	else if (enCurrentSector==4)
+	{
+		
+	}
 	
 }
 
