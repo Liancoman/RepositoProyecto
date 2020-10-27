@@ -9,6 +9,7 @@ void main ( void )
 	uint8 u8InputAction = 0;
 	tenParkingSectors enSector = enSector0; 
 	uint8 u8ConfirmationFromAction = 0;
+	uint8 u8ToSaveAddCarToOtherFuncion=0;
 	while(1)
 	{
 		fflush(stdin);
@@ -34,17 +35,21 @@ void main ( void )
 			}
 			else if( u8InputAction == 3 )
 			{
-				ShowEarnedMoney(enSector);
+				ShowEarnedMoney(enSector,u8ToSaveAddCarToOtherFuncion);
 			}
 			else if( u8InputAction == 4 )
 			{
 				uint8 u8Add=u8AddCarToSector(enSector);
+				u8ToSaveAddCarToOtherFuncion++;
 				printf("\nSe agrego su auto en el sector %d\nTotal de espacios disponibles %d ",enSector,u8Add );
 			}
 			else if ( u8InputAction == 5 )
 			{
 				uint8 u8Remove=u8RemoveCarFromSector(enSector);
+				if(u8Remove!=0)
+				{
 				printf("\nSe removio su auto en el sector %d\nTotal de espacios disponibles %d ",enSector,u8Remove );
+				}
 			}
 			else
 			{
@@ -78,15 +83,14 @@ void ShowNotAvailableSlots ( tenParkingSectors enCurrentSector )
 	}
 	else	printf("No seleccionó ningun sector valido \n");
 }
-void ShowEarnedMoney ( tenParkingSectors enCurrentSector )
+void ShowEarnedMoney ( tenParkingSectors enCurrentSector , uint8 u8ToSaveAddCarToOtherFuncion)
 {
-	uint8 u8ToSaveValue,u8ToShowMoney=0;
+	uint8 u8ToShowMoney=0;
 	if(enCurrentSector==0 || enCurrentSector==1 || enCurrentSector==2 || enCurrentSector==3 || enCurrentSector==4)
 	{
-		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		if(u8ToSaveAddCarToOtherFuncion>=1 )
 		{
-			u8ToSaveValue =astMyParks[enCurrentSector].u8NotAvailableSlots;
-			u8ToShowMoney = (u8ToSaveValue * PRISE);
+			u8ToShowMoney = ( u8ToSaveAddCarToOtherFuncion* PRISE);
 			printf("En el sector %d hay %d pesos\n",enCurrentSector,u8ToShowMoney );
 		}
 		
@@ -117,13 +121,17 @@ uint8 u8RemoveCarFromSector( tenParkingSectors enCurrentSector )
 	{
 		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
 		{
-			astMyParks[enCurrentSector].u8AvailableSlots++;
-			astMyParks[enCurrentSector].u8NotAvailableSlots--;
-			u8ToSaveRemoveCar = astMyParks[enCurrentSector].u8AvailableSlots;
+			if(astMyParks[enCurrentSector].u8NotAvailableSlots>0)
+			{
+				astMyParks[enCurrentSector].u8AvailableSlots++;
+				astMyParks[enCurrentSector].u8NotAvailableSlots--;
+				u8ToSaveRemoveCar = astMyParks[enCurrentSector].u8AvailableSlots;
+			}
+			else printf("No hay carros que remover en el sector %d \n",enCurrentSector );
 		}
-		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
+		else printf("No hay carros que remover en el sector %d \n",enCurrentSector );
 	}
-	printf("\nSe selecciono el sector %d",enCurrentSector);
+	
 	return u8ToSaveRemoveCar;
 }
 void u8ImportPaymentOfSlot( tenParkingSectors enCurrentSector )

@@ -35,7 +35,7 @@ typedef enum
 }
 void ShowAvailableSlots ( tenParkingSectors enCurrentSector );
 void ShowNotAvailableSlots ( tenParkingSectors enCurrentSector );
-void ShowEarnedMoney ( tenParkingSectors enCurrentSector );
+void ShowEarnedMoney ( tenParkingSectors enCurrentSector, uint8 u8ToSaveAddCarToOtherFuncion );
 uint8 u8AddCarToSector( tenParkingSectors enCurrentSector );
 uint8 u8RemoveCarFromSector( tenParkingSectors enCurrentSector );
 void u8ImportPaymentOfSlot( tenParkingSectors enCurrentSector );
