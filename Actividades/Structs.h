@@ -2,7 +2,6 @@
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
-
 typedef struct
 {
 	uint8 u8MaxSlots;
@@ -10,8 +9,6 @@ typedef struct
 	uint8 u8NotAvailableSlots;
 	uint32 u32MoneyEarn;
 }tstParkingInfo;
-
-
 typedef enum
 {
 	enSector0 = 0,
@@ -20,14 +17,14 @@ typedef enum
 	enSector3,
 	enSector4,
 	enMaxSectors
-}tenParkingSectors;   // tenParkingSectors = tipo de variable       enSector0= Nombre de la variable 	Ejemplo     int      a     = 0;
-
+}tenParkingSectors;
 
 #define SECTOR0_SLOTS		5
 #define SECTOR1_SLOTS		10
 #define SECTOR2_SLOTS		25
 #define SECTOR3_SLOTS		7
 #define SECTOR4_SLOTS		12
+#define PRISE 10
 #define INIT_PARKING_SLOTS		\
 {								\
 	{SECTOR0_SLOTS,SECTOR0_SLOTS,0,0},					\
@@ -36,8 +33,6 @@ typedef enum
 	{SECTOR3_SLOTS,SECTOR3_SLOTS,0,0},					\
 	{SECTOR4_SLOTS,SECTOR4_SLOTS,0,0},					\
 }
-
-
 void ShowAvailableSlots ( tenParkingSectors enCurrentSector );
 void ShowNotAvailableSlots ( tenParkingSectors enCurrentSector );
 void ShowEarnedMoney ( tenParkingSectors enCurrentSector );
