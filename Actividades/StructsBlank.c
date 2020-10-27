@@ -38,15 +38,16 @@ void main ( void )
 		printf("Press 3 to -> Read Earned Money\n");
 		printf("Press 4 to -> Enter a Car to a Section\n");
 		printf("Press 5 to -> Remove a Car from a Section\n");
+		printf("Press 6 to -> Print Parking Receipt\n");
 		//Se Pide ingresar opción y luego se muestra
 		printf("Enter selection: ");
 		scanf("%d", &u8InputAction);
-		printf("Action Selected %d\n", u8InputAction );
+		//printf("Action Selected %d\n", u8InputAction );
 		//Se le pide los pisos del estacionamiento "los sectores del 0 al 4" y se muestra
 		printf("Enter Sector from 0 to 4: ");
 		scanf("%d", &enSector);
-		printf("Sector Selected %d\n", enSector );
-
+		//printf("Sector Selected %d\n", enSector );
+		int save;
 		if( enSector < enMaxSectors )
 		{
 			if( u8InputAction == 1 )
@@ -55,6 +56,10 @@ void main ( void )
 			}
 			else if( u8InputAction == 2 )
 			{
+				if(astMyParks[enSector].u8AvailableSlots!=0)
+				{
+					astMyParks[enSector].u8NotAvailableSlots++;
+				}
 				ShowNotAvailableSlots(enSector);
 			}
 			else if( u8InputAction == 3 )
@@ -64,8 +69,11 @@ void main ( void )
 			else if( u8InputAction == 4 )
 			{
 				uint8 u8Add=u8AddCarToSector(enSector);
+				astMyParks[enSector].u8AvailableSlots=u8Add;
+				printf("\nSe agrego su auto en el sector %d\nTotal de espacios disponibles %d ",enSector,u8Add );
 			}
-			else if ( u8InputAction == 5 )
+			else if ( u8InputAction == 5 ) //Hola jesus pedazo  de mierda <3
+
 			{
 				uint8 u8Remove=u8RemoveCarFromSector(enSector);
 			}
@@ -79,7 +87,7 @@ void main ( void )
 		{
 			printf("\nNo se seleccionó la opción correcta.\n\n\n");
 		}
-		//system(cls);
+			//command(cls);
 	}
 }
 
@@ -89,25 +97,35 @@ void ShowAvailableSlots ( tenParkingSectors enCurrentSector )
 {
 	if(enCurrentSector==0)
 	{
-		
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		printf("En el sector %d, hay %d espacios disponibles\n", enCurrentSector,astMyParks[enCurrentSector].u8AvailableSlots);
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
 	}
-	else if (enCurrentSector==1)
+	else if (enCurrentSector==1) //si  1 ==1  entonces 
 	{
-
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		printf("En el sector %d, hay %d espacios disponibles\n", enCurrentSector,astMyParks[enCurrentSector].u8AvailableSlots);
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
 	}
 	else if (enCurrentSector==2)
 	{
-		
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		printf("En el sector %d, hay %d espacios disponibles\n", enCurrentSector,astMyParks[enCurrentSector].u8AvailableSlots);
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
 	}
 	else if (enCurrentSector==3)
 	{
-		
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		printf("En el sector %d, hay %d espacios disponibles\n", enCurrentSector,astMyParks[enCurrentSector].u8AvailableSlots);
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
 	}
 	else if (enCurrentSector==4)
 	{
-		
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		printf("En el sector %d, hay %d espacios disponibles\n", enCurrentSector,astMyParks[enCurrentSector].u8AvailableSlots);
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
 	}
-	
+	else 	printf("No seleccionó ningun sector valido \n");
 }
 
 /*F2	->(F2) Una funcion con 1 parametro, la cual reciba la seccion
@@ -115,8 +133,38 @@ void ShowAvailableSlots ( tenParkingSectors enCurrentSector )
 */
 void ShowNotAvailableSlots ( tenParkingSectors enCurrentSector )
 {
-	
-	printf("\nSe selecciono el sector %d",enCurrentSector);
+		
+	if(enCurrentSector==0)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots == 0)
+		printf("Todos los espacios en el sector %d estan desocupados\n",enCurrentSector );
+		else printf("En el sector %d, hay %d espacios ocupados\n", enCurrentSector,astMyParks[enCurrentSector].u8NotAvailableSlots);
+	}
+	else if (enCurrentSector==1) //si  1 ==1  entonces 
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		printf("Todos los espacios en el sector %d estan ocupados\n",enCurrentSector );
+		else printf("En el sector %d, hay %d espacios ocupados\n", enCurrentSector,astMyParks[enCurrentSector].u8NotAvailableSlots);
+	}
+	else if (enCurrentSector==2)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		printf("Todos los espacios en el sector %d estan ocupados\n",enCurrentSector );
+		else printf("En el sector %d, hay %d espacios ocupados\n", enCurrentSector,astMyParks[enCurrentSector].u8NotAvailableSlots);
+	}
+	else if (enCurrentSector==3)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		printf("Todos los espacios en el sector %d estan ocupados\n",enCurrentSector );
+		else printf("En el sector %d, hay %d espacios ocupados\n", enCurrentSector,astMyParks[enCurrentSector].u8NotAvailableSlots);
+	}
+	else if (enCurrentSector==4)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		printf("Todos los espacios en el sector %d estan ocupados\n",enCurrentSector );
+		else printf("En el sector %d, hay %d espacios ocupados\n", enCurrentSector,astMyParks[enCurrentSector].u8NotAvailableSlots);
+	}
+	else 	printf("No seleccionó ningun sector valido \n");
 	
 }
 
@@ -124,14 +172,117 @@ void ShowNotAvailableSlots ( tenParkingSectors enCurrentSector )
  de estacionamiento (0, 1, 2, 3 o 4) e imprima la cantidad de dinero acumulada en esa sección*/
 void ShowEarnedMoney ( tenParkingSectors enCurrentSector )
 {
-	printf("\nSe selecciono el sector %d",enCurrentSector);
+	int save1,save2=0;
+	if(enCurrentSector==0)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		{
+			save1 =astMyParks[enCurrentSector].u8NotAvailableSlots;
+			save2 = (save1*10)+save2;
+			printf("En el sector %d hay %d\n",enCurrentSector,save2 );
+		}
+		
+		else printf("En el sector %d no hay ingresos\n", enCurrentSector);
+	}
+	else if (enCurrentSector==1) //si  1 ==1  entonces 
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		{
+			save1 =astMyParks[enCurrentSector].u8NotAvailableSlots;
+			save2 = (save1*10)+save2;
+			printf("En el sector %d hay %d\n",enCurrentSector,save2 );
+		}
+		
+		else printf("En el sector %d no hay ingresos\n", enCurrentSector);
+	}
+	else if (enCurrentSector==2)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		{
+			save1 =astMyParks[enCurrentSector].u8NotAvailableSlots;
+			save2 = (save1*10)+save2;
+			printf("En el sector %d hay %d\n",enCurrentSector,save2 );
+		}
+		
+		else printf("En el sector %d no hay ingresos\n", enCurrentSector);
+	}
+	else if (enCurrentSector==3)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		{
+			save1 =astMyParks[enCurrentSector].u8NotAvailableSlots;
+			save2 = (save1*10)+save2;
+			printf("En el sector %d hay %d\n",enCurrentSector,save2 );
+		}
+		
+		else printf("En el sector %d no hay ingresos\n", enCurrentSector);
+	}
+	else if (enCurrentSector==4)
+	{
+		if(astMyParks[enCurrentSector].u8NotAvailableSlots != 0)
+		{
+			save1 =astMyParks[enCurrentSector].u8NotAvailableSlots;
+			save2 = (save1*10)+save2;
+			printf("En el sector %d hay %d\n",enCurrentSector,save2 );
+		}
+		
+		else printf("En el sector %d no hay ingresos\n", enCurrentSector);
+	}
+	else 	printf("No seleccionó ningun sector valido \n");
 }
+
 /*F4	->(F4) Una funcion con 1 parametro, la cual reciba la seccion
  de estacionamiento y permita ingresar un vehiculo a esa seccion*/
 uint8 u8AddCarToSector( tenParkingSectors enCurrentSector )
 {
+	uint8 savenum=0;
+	if(enCurrentSector==0)
+	{
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		{
+			astMyParks[enCurrentSector].u8AvailableSlots--;
+			savenum = astMyParks[enCurrentSector].u8AvailableSlots;
+		}
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
+	}
+	if(enCurrentSector==1)
+	{
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		{
+			astMyParks[enCurrentSector].u8AvailableSlots--;
+			savenum = astMyParks[enCurrentSector].u8AvailableSlots;
+		}
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
+	}
+	if(enCurrentSector==2)
+	{
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		{
+			astMyParks[enCurrentSector].u8AvailableSlots--;
+			savenum = astMyParks[enCurrentSector].u8AvailableSlots;
+		}
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
+	}
+	if(enCurrentSector==3)
+	{
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		{
+			astMyParks[enCurrentSector].u8AvailableSlots--;
+			savenum = astMyParks[enCurrentSector].u8AvailableSlots;
+		}
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
+	}
+	if(enCurrentSector==4)
+	{
+		if(astMyParks[enCurrentSector].u8AvailableSlots!= 0)
+		{
+			astMyParks[enCurrentSector].u8AvailableSlots--;
+			savenum = astMyParks[enCurrentSector].u8AvailableSlots;
+		}
+		else printf("No hay espacios disponibles en el sector %d \n",enCurrentSector );
+	}
 	printf("\nSe selecciono el sector %d",enCurrentSector);
-	return 0;
+	return savenum;
 }
 /*F5	->(F5) Una funcion con 1 parametro, la cual reciba la seccion
  de estacionamiento y permita retirar un vehiculo de la cuenta de la seccion*/

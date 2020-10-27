@@ -11,6 +11,7 @@ typedef struct
 	uint32 u32MoneyEarn;
 }tstParkingInfo;
 
+
 typedef enum
 {
 	enSector0 = 0,
@@ -19,14 +20,14 @@ typedef enum
 	enSector3,
 	enSector4,
 	enMaxSectors
-}tenParkingSectors;
+}tenParkingSectors;   // tenParkingSectors = tipo de variable       enSector0= Nombre de la variable 	Ejemplo     int      a     = 0;
+
 
 #define SECTOR0_SLOTS		5
-#define SECTOR1_SLOTS		5
-#define SECTOR2_SLOTS		5
-#define SECTOR3_SLOTS		5
-#define SECTOR4_SLOTS		5
-
+#define SECTOR1_SLOTS		10
+#define SECTOR2_SLOTS		25
+#define SECTOR3_SLOTS		7
+#define SECTOR4_SLOTS		12
 #define INIT_PARKING_SLOTS		\
 {								\
 	{SECTOR0_SLOTS,SECTOR0_SLOTS,0,0},					\
