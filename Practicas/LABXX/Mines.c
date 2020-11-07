@@ -7,7 +7,7 @@
 
 void main(void)
 {
-  int buscaminas[RENGLON][COLUMNA];
+  int buscaminas[RENGLON][COLUMNA]={0};
   int posicioni,posicionj,nivel,bombas,i,j;                                    
   int gameStatus=0, victoria=0,gameCounter=0;            
   srand(time(NULL)); 
