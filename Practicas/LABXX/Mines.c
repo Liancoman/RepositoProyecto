@@ -18,7 +18,7 @@ void main(void)
     printf("Ingrese el nivel que desea :");
     scanf("%d", &u8nivel);
       
-    switch(nivel)
+    switch(u8nivel)
     {
       case 1:
         u8bombas = 10;
@@ -38,7 +38,7 @@ void main(void)
     }
 
  //Esto se repite hasta que se acabe el juego 
-  while(au8gameStatus != -1 || au8victoria == 1)
+  while(u8gameStatus != -1 || u8ictoria == 1)
   { 
     system("cls"); 
     //Empieza el juego     
@@ -54,7 +54,7 @@ void main(void)
     
     if(au8buscaminas[u8posicioni][u8posicionj] == 3)
     {                              
-      gameStatus = -1;
+      u8gameStatus = -1;
       imprimir_tablero(au8buscaminas, u8gameStatus);
       printf("\t ¡¡¡Perdiste, el juego ha terminado!!");
                   
@@ -82,7 +82,7 @@ void colocar_bombas(uint8 au8buscaminas[RENGLON][COLUMNA], uint8 u8bum)
 {
      uint8 i, u8renglon, u8columna;
     
-     for(i = 1; i <= bum; i++)
+     for(i = 1; i <= u8bum; i++)
      {
            u8renglon = 0 + rand() % 14;
            u8columna = 0 + rand() % 14;
