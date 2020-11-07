@@ -8,11 +8,12 @@
 void main(void)
 {
   uint8 au8buscaminas[RENGLON][COLUMNA]={0};
-  uint8 u8posicioni, u8posicionj,u8nivel,u8bombas,i,j;                                    
+  uint8 u8posicioni, u8posicionj,u8nivel=0,u8bombas,i,j,u8jugar=1;                                    
   uint8 u8gameStatus=0, u8ictoria=0, u8gameCounter=0;            
   srand(time(NULL)); 
 
-  //Hacer bucle
+  while(u8jugar==1)
+  {
     printf("\n   >>>>Buscaminas<<<<\n\n");
     printf("Niveles:\n1)Facil\n2)Normal\n3)Dificil\n");
     printf("Ingrese el nivel que desea :");
@@ -34,9 +35,10 @@ void main(void)
       break;
       default: 
         printf("Seleccion invalida, intente de nuevo.\n\n");
+
       break;                 
     }
-
+    
  //Esto se repite hasta que se acabe el juego 
   while(u8gameStatus != -1 || u8ictoria == 1)
   { 
@@ -73,9 +75,20 @@ void main(void)
     }
     u8gameCounter++;
   }
+
+  //system("cls");
+  printf("Desea continuar jugando.\n1)Sí\n2)No\n");
+  scanf("%d",&u8jugar);
+
   for(i = 0; i <= RENGLON - 1; i++)
-    for(j = 0; j <= COLUMNA - 1; j++)
-      au8buscaminas[i][j] = 0;   
+  for(j = 0; j <= COLUMNA - 1; j++)
+    au8buscaminas[i][j] = 0;
+    u8nivel=0;
+    u8bombas=0; 
+    u8gameCounter=0;
+    u8gameStatus=0;   
+    u8ictoria=0;
+  }
 }     
     
 void colocar_bombas(uint8 au8buscaminas[RENGLON][COLUMNA], uint8 u8bum)
@@ -110,7 +123,7 @@ void imprimir_tablero(uint8 au8tablero[RENGLON][COLUMNA], uint8 u8perder)
         {
           revisar_alrededor (au8tablero,i,j);
         }
-        else if((au8tablero[i][j] ==3) && (u8perder == -1))
+        else if(  au8tablero[i][j] == 3 & u8perder == -1)
           printf("%c  ", '@');
         else
           printf("%c  ", '#');        
