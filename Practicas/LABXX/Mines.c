@@ -8,7 +8,7 @@ void main(void)
   srand(time(NULL)); 
   while(u8jugar==1)
   {
-    system("cls");
+    //system("clear");
     printf("\n   >>>>Buscaminas<<<<\n\n");
     printf("Niveles:\n1)Facil\n2)Normal\n3)Dificil\n");
     printf("Ingrese el nivel que desea :");
@@ -33,7 +33,7 @@ void main(void)
     }
     while(u8gameStatus != -1 || u8ictoria == 1)
     { 
-      system("cls"); 
+      //system("clear"); 
       printf("\n-Buscaminas-\n\n");
       imprimir_tablero(au8buscaminas, u8gameStatus);
       printf("\n"); 
@@ -60,8 +60,8 @@ void main(void)
       }
       u8gameCounter++;
     }
-    system("pause");
-    system("cls");
+    //system("pause");
+    //system("clear");
     printf("\nDesea continuar jugando.\n1)Si\n2)No\n");
     scanf("%d",&u8jugar);
     for(i = 0; i <= RENGLON - 1; i++)
@@ -72,5 +72,6 @@ void main(void)
     u8gameCounter=0;
     u8gameStatus=0;   
     u8ictoria=0;
+    
   }
 }     
