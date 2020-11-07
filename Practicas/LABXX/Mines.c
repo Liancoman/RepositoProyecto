@@ -1,14 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <conio.h>
 #include <ctype.h>
-#include <stdlib.h>
 #include <time.h>
 #include "Mines.h"
 
-int main()
+void main(void)
 {
-  int buscaminas[RENGLON][COLUMNA] = {0};
-  int i,j,nivel, bombas;                                    
+  int buscaminas[RENGLON][COLUMNA];
+  int posicioni,posicionj,nivel,bombas,i,j;                                    
   int gameStatus=0, victoria=0,gameCounter=0;            
   srand(time(NULL)); 
 
@@ -22,168 +22,152 @@ int main()
     {
       case 1:
         bombas = 10;
+        colocar_bombas(buscaminas, bombas);
       break;
       case 2:
         bombas = 20;
+        colocar_bombas(buscaminas, bombas);
       break;
       case 3:
         bombas = 30;
+        colocar_bombas(buscaminas, bombas);
       break;
       default: 
         printf("Seleccion invalida, intente de nuevo.\n\n");
       break;                 
     }
 
-  colocar_bombas(&buscaminas[0][0], bombas);
-
  //Esto se repite hasta que se acabe el juego 
   while(gameStatus != -1 || victoria == 1)
   { 
-    //system(cls); 
+    system("cls"); 
     //Empieza el juego     
     printf("\n-Buscaminas-\n\n");
     //Imprimimos tablero 1ra vez puro #
-    imprimir_tablero(&buscaminas[0][0], gameStatus);  //ojo
+    imprimir_tablero(buscaminas, gameStatus);  //ojo
     
     printf("\n"); 
     printf("*Ingrese la tirada[i, j]: ");
-    scanf("%d",&i);
-    scanf("%d",&j);
+    scanf("%d",&posicionj);
+    scanf("%d",&posicioni);
     
-    if(buscaminas[i][j] == 9)
+    
+    if(buscaminas[posicioni][posicionj] == 3)
     {                              
       gameStatus = -1;
-      imprimir_tablero(&buscaminas[0][0], gameStatus);
+      imprimir_tablero(buscaminas, gameStatus);
       printf("\t ¡¡¡Perdiste, el juego ha terminado!!");
-      getchar();              
+                  
     }
     else
     {
-      buscaminas[i][j] = 1;
+      buscaminas[posicioni][posicionj] = 1;
     }
 
-    if(gameCounter == (255 - bombas) )
+    if( gameCounter == (255 - bombas) )
     {
       victoria = 1;
-      imprimir_tablero(&buscaminas[0][0], gameStatus);
-      printf("\t  ¡¡¡Has ganado, felicidades!!!");
-      getchar();
+      imprimir_tablero(buscaminas, gameStatus);
+      printf("  ¡¡¡Has ganado, felicidades!!!");
+      
     }
     gameCounter++;
   }
   for(i = 0; i <= RENGLON - 1; i++)
-  for(j = 0; j <= COLUMNA - 1; j++)
-    buscaminas[i][j] = 1;   
+    for(j = 0; j <= COLUMNA - 1; j++)
+      buscaminas[i][j] = 0;   
 }     
     
-
-void colocar_bombas(int *minas, int bum)  //Revisar las  @
+void colocar_bombas(int buscaminas[RENGLON][COLUMNA], int bum)
 {
-  int i,j, renglon, columna;
-  int arreglo [15][15];
+     int i, renglon, columna;
+    
+     for(i = 1; i <= bum; i++)
+     {
+           renglon = 0 + rand() % 14;
+           columna = 0 + rand() % 14;
+          
+           buscaminas[renglon][columna]= 3 ;
+     }
+}
 
-  for(i = 0; i < bum; i++)
-  {
-    renglon = 0 + rand() % 14;
-    columna = 0 + rand() % 15;
-    printf("%d %d\n",renglon,columna );
-    for(j=0;j<(renglon*15)+columna;j++)
-    {
-      minas++;
-    }
-    *minas=9;
-    for(j=0;j<=(renglon*15)+columna;j++)
-    {
-      minas--;
-    }
-
-  }
-} 
-
-void imprimir_tablero(int *tablero, int perder)
+void imprimir_tablero(int tablero[RENGLON][COLUMNA], int perder)
 {
-    int i, j,save2;
-    int arreglo2[15][15];
+    int i, j;
     //Se imprime los numeros de arriba
     for(i = 0; i <= RENGLON -6; i++)  printf("%d  ", i);
-      for(i = 10; i <=14; i++)  printf("%d ", i);
+    for(i = 10; i <=14; i++)  printf("%d ", i);
     printf("\n");
     //Se imprime la separación de numeros con el juego
-    for(i = 0; i <= COLUMNA + 7; i++)
-    printf("--");
+    for(i = 0; i <= COLUMNA + 7; i++)  printf("--");
     printf("\n");
-    
-    //Se imprime el juego     
+       
     for(i = 0; i <= RENGLON -1; i++)
     {
       for(j = 0; j <= COLUMNA - 1; j++)
       {
-        arreglo2[i][j]=*tablero;
-        if(arreglo2[i][j] == 1)
+        if(tablero[i][j] == 1)
         {
-          //revisar_alrededor(&arreglo2[0][0],i,j);
-          printf("f  ");
-          
-        }  
-        
-        else if((arreglo2[i][j] == 9) && (perder == -1))
-        {   
-          printf("%c  ", '@');
-          tablero++;
+          revisar_alrededor (tablero,i,j);
         }
-        else    printf("%c  ", '#');   
-
-
-        tablero++;     
+        else if((tablero[i][j] ==3) && (perder == -1))
+          printf("%c  ", '@');
+        else
+          printf("%c  ", '#');        
       }
       printf("| %d", i);   
-      printf("\n"); 
+      printf("\n");     
     }
-    
 }
 
-/*void revisar_alrededor(int *tablero2, int a, int b)
+void revisar_alrededor(int Tablero[RENGLON][COLUMNA],int Fila, int Columna)
 {
-  int arreglo3[15][15];
-  int i,j,sum=0;
-  
-  llegar al cerca 1
-  for(j=0;j<=((b-1)*15)+(a-1)  ;j++ )
+  int Conteo = 0, FilaInicio, FilaFin, ColumnaInicio, ColumnaFin;
+  if (Fila <= 0)
   {
-    tablero2++;
+  FilaInicio = 0;
   }
-  
-  ver los 3 valores de arriba si son 9
-  for(j=0;j<=2 ;j++ )
+  else 
   {
-    if(*tablero2 == 9) sum++
-    tablero2++;
+  FilaInicio = Fila - 1;
   }
-  Se elimino algo importante
-  llegar al cerca 1
-  for(j=0;j<=((b-1)*15)+(a-1)  ;j++ )
+  if 
+  (Fila + 1 >= RENGLON)
   {
-    tablero2++;
-  }
-  
-  ver los 3 valores de arriba si son 9
-  for(j=0;j<=2 ;j++ )
+    FilaFin = RENGLON - 1;
+  } 
+  else 
   {
-    if(*tablero2 == 9) sum++
-    tablero2++;
+    FilaFin = Fila + 1;
   }
 
-  llegar al cerca 1
-  for(j=0;j<=((b-1)*15)+(a-1)  ;j++ )
+  if (Columna <= 0) 
   {
-    tablero2++;
-  }
-  
-  ver los 3 valores de arriba si son 9
-  for(j=0;j<=2 ;j++ )
-  {
-    if(*tablero2 == 9) sum++
-    tablero2++;
+    ColumnaInicio = 0;
   } 
-  printf("%d ",sum);
-}*/
+  else 
+  {
+    ColumnaInicio = Columna - 1;
+  }
+  if (Columna + 1 >= COLUMNA) 
+  {
+    ColumnaFin = COLUMNA - 1;
+  } 
+  else 
+  {
+    ColumnaFin = Columna + 1;
+  }
+  int m;
+  for (m = FilaInicio; m <= FilaFin; m++)
+  {
+    int l;
+    for (l = ColumnaInicio; l <= ColumnaFin; l++)
+    {
+      if (Tablero[m][l] == 3) 
+      {
+        Conteo++;
+      }
+    }
+  }
+  printf("%d  ",Conteo);
+}
