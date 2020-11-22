@@ -1,16 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <ctype.h>
-#include <time.h>
-
-typedef unsigned int uint8;
-
-#define Inicio 0
+#include "MaquinadeEstado.h"
 
 void main (void)
 {
-	uint8 end =Inicio;
+	uint8 end = Continue;
 	uint8 variableparaAlcoholorCoctel=Inicio;
 	uint8 variableparaAlcoholesPuros=Inicio;
 	uint8 variableparaCocteles=Inicio;
@@ -19,7 +11,28 @@ void main (void)
 	uint8 variableparasalirdewhile2=Inicio;
 	uint8 variableparasalirdewhile3=Inicio;
 	uint8 variableparasalirdewhile4=Inicio;
-	while (end==Inicio)
+	uint8 variableparaespera=Inicio;
+	uint8 variableparaubicacion;
+	uint8 ltsderon=MAX;
+	uint8 ltsdevodka=MAX;
+	uint8 ltsdetequila=MAX;
+	uint8 ltsdeginebra=MAX;
+	uint8 ltsdelimon=MAX;
+	uint8 ltsdenaranja=MAX;
+	uint8 ltsdepina=MAX;
+	uint8 ltsdefresa=MAX;
+	uint8 ltsdearandono=MAX;
+	uint8 ltsdetriple=MAX;
+	uint8 ltsdecoca=MAX;
+	uint8 ltsdecoco=MAX;
+	uint8 ltsdesangria=MAX;
+	uint8 ltsdetoronja=MAX;
+	uint8 ltsdegranadina=MAX;
+	uint8 ltsdevermut=MAX;
+	uint8 ltsdecrema=MAX;
+	uint8 arreglodebebidas[18]={Inicio,ron,vodka,tequila,ginebra,limon,naranja,pina,fresa,arandano,triple,coco,coca,sangria,toronja,granadina,vermut,crema};
+
+	while (end==Continue)
 	{
 		system("cls");
 		while(variableparasalirdewhile1==Inicio)
@@ -33,50 +46,75 @@ void main (void)
 		switch(variableparaAlcoholorCoctel)
 		{
 			case 1:
-			while(variableparasalirdewhile2==Inicio)
-			{
+				while(variableparasalirdewhile2==Inicio)
+				{
 				printf("Usted selecciono Alcohol Puro, las opciones son las siguientes:\n1)Ron\n2)Vodka\n3)Tequila\n4)Ginebra\n\nSeleccione opcion: ");
 				scanf("%d",&variableparaAlcoholesPuros);
 				if(variableparaAlcoholesPuros==1 | variableparaAlcoholesPuros==2 | variableparaAlcoholesPuros==3 | variableparaAlcoholesPuros==4)	variableparasalirdewhile2++;
 				else printf("Seleccione una opcion valida\n");
-			}
-			system("cls");
-			switch(variableparaAlcoholesPuros)
-			{
-				case 1:
-				printf("Usted selecciono la opcion Ron.\n" );
-				break;
-				case 2:
-				printf("Usted selecciono la opcion Vodka.\n" );
-				break;
-				case 3:
-				printf("Usted selecciono la opcion Tequila.\n" );
-				break;
-				case 4:
-				printf("Usted selecciono la opcion Ginebra.\n");
-				break;
-			}
+				}
+				system("cls");
+				switch(variableparaAlcoholesPuros)
+				{
+					case 1:
+					variableparaubicacion=arreglodebebidas[ron];
+					printf("Usted selecciono la opcion Ron.\nEl vaso se movera %d espacios para ser llenado\n",ron);
+					ltsderon--;
+					delay(variableparaespera);
+					break;
+					case 2:
+					variableparaubicacion=arreglodebebidas[vodka];
+					printf("Usted selecciono la opcion Vodka.\nEl vaso se movera %d espacios para ser llenado\n",vodka);
+					ltsdevodka--;
+					delay(variableparaespera);
+					break;
+					case 3:
+					variableparaubicacion=arreglodebebidas[tequila];
+					printf("Usted selecciono la opcion Tequila.\nEl vaso se movera %d espacios para ser llenado\n",tequila);
+					ltsdetequila--;
+					delay(variableparaespera);
+					break;
+					case 4:
+					variableparaubicacion=arreglodebebidas[ginebra];
+					printf("Usted selecciono la opcion Ginebra.\nEl vaso se movera %d espacios para ser llenado\n",ginebra);
+					ltsdeginebra--;
+					delay(variableparaespera);
+					break;
+				}
 			break;
 
 			case 2:
-			while(variableparasalirdewhile3==Inicio)
-			{
-			printf("Usted selecciono Cocteles, los alcholes bases son los siguientes:\n1)Ron\n2)Vodka\n3)Tequila\n4)Ginebra\n\nSeleccione opcion: ");
-			scanf("%d",&variableparaCocteles);
-			if(variableparaCocteles==1 | variableparaCocteles==2 | variableparaCocteles==3 | variableparaCocteles==4)	variableparasalirdewhile3++;
-			else printf("Seleccione una opcion valida\n");
-			}
-			system("cls");
-			switch(variableparaCocteles)
-			{
+				while(variableparasalirdewhile3==Inicio)
+				{
+					printf("Usted selecciono Cocteles, los alcholes bases son los siguientes:\n1)Ron\n2)Vodka\n3)Tequila\n4)Ginebra\n\nSeleccione opcion: ");
+					scanf("%d",&variableparaCocteles);
+					if(variableparaCocteles==1 | variableparaCocteles==2 | variableparaCocteles==3 | variableparaCocteles==4)	variableparasalirdewhile3++;
+					else printf("Seleccione una opcion valida\n");
+				}
+				system("cls");
+				switch(variableparaCocteles)
+				{
 				case 1:
 					while(variableparasalirdewhile4==Inicio)
 					{
-					printf("Los cocteles que le ofresemos son los siguinetes:\n1)Mojito\n2)Mai Tai\n3)Caipirinha\n4)Daiquiri\n5)Piña Colada\nSeleccione que desea: ");
+					printf("Los cocteles que le ofresemos son los siguinetes:\n1)Mojito\n2)Mai Tai\n3)Caipirinha\n4)Daiquiri\n5)Pina Colada\nSeleccione que desea: ");
 					scanf("%d",&variableparaCoctelesfinal);
 					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
 					else printf("Seleccione una opcion valida\n");
 					}
+					switch(variableparaCoctelesfinal)
+						{
+							case 1: FMojito(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon);
+							break;
+							case 2: FMaiTai(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdenaranja,ltsdepina,ltsdetriple);
+							break;
+							case 3:	FCaipirinha(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdepina,ltsdetriple);
+							break;
+							case 4: FDaiquiri(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdefresa);
+							break;
+							case 5:	FPinaColada(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdecoco,ltsdecrema,ltsdepina);
+							break;
+						}	
 				break;
 				case 2:
 					while(variableparasalirdewhile4==Inicio)
@@ -86,7 +124,19 @@ void main (void)
 					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
 					else printf("Seleccione una opcion valida\n");
 					}
-
+					switch(variableparaCoctelesfinal)
+						{	
+							case 1: FCosmopolitan(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdearandono,ltsdelimon);
+							break;
+							case 2: FLongIslandIceTea(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdetequila,ltsdeginebra,ltsderon,ltsdetriple,ltsdecoca);
+							break;
+							case 3: FVodkajelly(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdelimon,ltsdefresa);
+							break;
+							case 4: FAmanecermoscovita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdelimon);
+							break;
+							case 5: FBloodyMary(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdefresa);
+							break;
+						}	
 				break;
 				case 3:
 					while(variableparasalirdewhile4==Inicio)
@@ -96,6 +146,19 @@ void main (void)
 					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
 					else printf("Seleccione una opcion valida\n");
 					}
+					switch(variableparaCoctelesfinal)
+						{
+							case 1: FVampiro(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila, ltsdelimon,ltsdesangria,ltsdecoca);
+							break;
+							case 2: FPaloma(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdelimon,ltsdecoca);
+							break;
+							case 3: FChistosita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdetoronja);
+							break;
+							case 4: FSunrise(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdenaranja,ltsdegranadina);
+							break;
+							case 5: FMargarita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdelimon);
+							break;
+						}	
 				break;
 				case 4:
 					while(variableparasalirdewhile4==Inicio)
@@ -105,51 +168,444 @@ void main (void)
 					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
 					else printf("Seleccione una opcion valida\n");
 					}
+					switch(variableparaCoctelesfinal)
+						{
+							case 1: FMartini(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdevermut);
+							break;
+							case 2: FAngelCaido(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdelimon,  ltsdecrema);
+							break;
+							case 3: FMadredelanovia(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdenaranja,  ltsdefresa);
+							break;
+							case 4: FAuroradorada(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdegranadina,  ltsdetriple);
+							break;
+							case 5:FBoladenieve(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdecrema,  ltsdelimon,  ltsdenaranja);
+							break;
+						}	
 				break;
 			}
 			break;
 		}
-		printf("Desea otra bebida?\n0)Si\n1)No\n");
-		scanf("%d",&end);
-		if(end==Inicio)
-		{
-			variableparaAlcoholorCoctel=Inicio;
-			variableparaAlcoholesPuros=Inicio;
-			variableparaCocteles=Inicio;
-			variableparaCoctelesfinal=Inicio;
-			variableparasalirdewhile1=Inicio;
-			variableparasalirdewhile2=Inicio;
-			variableparasalirdewhile3=Inicio;
-			variableparasalirdewhile4=Inicio;
-		}
+		printf("Se recorera el soporte del vaso al inicio\n");
+		delay(variableparaespera);
+		delay(variableparaespera);
+		variableparaAlcoholorCoctel=Inicio;
+		variableparaAlcoholesPuros=Inicio;
+		variableparaCocteles=Inicio;
+		variableparaCoctelesfinal=Inicio;
+		variableparasalirdewhile1=Inicio;
+		variableparasalirdewhile2=Inicio;
+		variableparasalirdewhile3=Inicio;
+		variableparasalirdewhile4=Inicio;
+		variableparaubicacion=arreglodebebidas[Inicio];
+		printf("\n\nUbicacion del vaso : %d\n",variableparaubicacion);		
+		delay(variableparaespera);
+		//agregar el if de si se acaba y rellenar
+			if(ltsderon==0)
+			{
+				printf("Se acabo el Ron, porfavor llenar de nuevo.\n");
+				ltsderon=MAX;
+			}
+			else if(ltsdevodka==0)
+			{
+				printf("Se acabo el Vodka, porfavor llenar de nuevo.\n");
+				ltsdevodka=MAX;
+			}
+			else if(ltsdetequila==0)
+			{
+				printf("Se acabo el Tequila, porfavor llenar de nuevo.\n");
+				ltsdetequila=MAX;
+			}
+			else if(ltsdeginebra==0)
+			{
+				printf("Se acabo el Ginebra, porfavor llenar de nuevo.\n");
+				ltsdeginebra=MAX;
+			}
+			else if(ltsdelimon==0)
+			{
+				printf("Se acabo el zumo de limon, porfavor llenar de nuevo.\n");
+				ltsdelimon=MAX;
+			}
+			else if(ltsdenaranja==0)
+			{
+				printf("Se acabo el zumo de naranja, porfavor llenar de nuevo.\n");
+				ltsdenaranja=MAX;
+			}
+			else if(ltsdepina==0)
+			{
+				printf("Se acabo el zumo de pina, porfavor llenar de nuevo.\n");
+				ltsdepina=MAX;
+			}
+			else if(ltsdefresa==0)
+			{
+				printf("Se acabo el zumo de fresa, porfavor llenar de nuevo.\n");
+				ltsdefresa=MAX;
+			}
+			else if(ltsdearandono==0)
+			{
+				printf("Se acabo el zumo de arandano, porfavor llenar de nuevo.\n");
+				ltsdearandono=MAX;
+			}
+			else if(ltsdetriple==0)
+			{
+				printf("Se acabo el triple seco, porfavor llenar de nuevo.\n");
+				ltsdetriple=MAX;
+			}
+			else if(ltsdecoca==0)
+			{
+				printf("Se acabo el Refresco de coca, porfavor llenar de nuevo.\n");
+				ltsdecoca=MAX;
+			}
+			else if(ltsdecoco==0)
+			{
+				printf("Se acabo el zumo de coco, porfavor llenar de nuevo.\n");
+				ltsdecoco=MAX;
+			}
+			else if(ltsdesangria==0)
+			{
+				printf("Se acabo la sangria, porfavor llenar de nuevo.\n");
+				ltsdesangria=MAX;
+			}
+			else if(ltsdetoronja==0)
+			{
+				printf("Se acabo el Refresco de toronja, porfavor llenar de nuevo.\n");
+				ltsdetoronja=MAX;
+			}
+			else if(ltsdegranadina==0)
+			{
+				printf("Se acabo la granadina, porfavor llenar de nuevo.\n");
+				ltsdegranadina=MAX;
+			}
+			else if(ltsdevermut==0)
+			{
+				printf("Se acabo el vermut seco, porfavor llenar de nuevo.\n");
+				ltsdevermut=MAX;
+			}
+			else if(ltsdecrema==0)
+			{
+				printf("Se acabo la crema, porfavor llenar de nuevo.\n");
+				ltsdecrema=MAX;
+			}
+			else {/*nothing*/}	
+
+			delay(variableparaespera);
+			delay(variableparaespera);
+	
 	}
 }
 
-
-
-/*
-	Ron
-		1)Mojito				zumo de limón
-		2)Mai Tai				zumo de naranja, piña, limón y triple sec
-		3)Caipirinha			zumo de limón, piña y triple sec
-		4)Daiquiri				zumo de limón y fresa
-		5)Piña Colada			coco, crema y jugo de piña
-	Vodka
-		1)Cosmopolitan	 		zumo de arándano y limón
-		2)Long Island Ice Tea 	Vodka, tequila, ginebra, ron, triple sec, y Refresco 
-		3)Vodka jelly			zumo de limón y fresa
-		4)Amanecer moscovita
-		5)Bloody Mary
-	Tequila 
-		1)Vampiro				zumo de limón, sangrita y Refresco.
-		2)Paloma	  			zumo de limón y Refresco
-		3)Chistosita			Refresco de toronja
-		4)Sunrise 				zumo de naranja y granadina
-		5)Margarita				zumo de limón
-	Ginebra
-		1)Martini				vermut seco
-		2)Angel Caido
-		3)Madre de la novia
-		4)Aurora dorada
-		5)Bola de nieve
-*/
+void FMojito(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera,uint8 ltsderon, uint8 ltsdelimon)
+{
+	printf("Usted selecciono la opcion Mojito.\nEl vaso se movera %d espacio para ser llenado\n",ron);
+	ltsderon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ron];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+}
+void FMaiTai(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsderon, uint8 ltsdelimon, uint8 ltsdenaranja, uint8 ltsdepina, uint8 ltsdetriple)
+{
+	printf("Usted selecciono la opcion Mai Tai.\nEl vaso se movera %d espacio para ser llenado\n",ron);
+	ltsderon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ron];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon]; 
+	printf("El vaso se movera al espacio %d para ser llenado con naranja\n",naranja);
+	ltsdenaranja--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[naranja]; 
+	printf("El vaso se movera al espacio %d para ser llenado con pina\n",pina);
+	ltsdepina--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[pina]; 
+	printf("El vaso se movera al espacio %d para ser llenado con triple seco\n",triple);
+	ltsdetriple--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[triple]; 
+}
+void FCaipirinha(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsderon, uint8 ltsdelimon, uint8 ltsdepina, uint8 ltsdetriple)
+{
+	printf("Usted selecciono la opcion Caipirinha.\nEl vaso se movera %d espacio para ser llenado\n",ron);
+	ltsderon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ron];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con pina\n",pina);
+	ltsdepina--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[pina];
+	printf("El vaso se movera al espacio %d para ser llenado con triple seco\n",triple);
+	ltsdetriple--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[triple];
+}
+void FDaiquiri(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsderon, uint8 ltsdelimon, uint8 ltsdefresa)
+{
+	printf("Usted selecciono la opcion Daiquiri.\nEl vaso se movera %d espacio para ser llenado\n",ron);
+	ltsderon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ron];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con fresa\n",fresa);
+	ltsdefresa--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[fresa];
+}
+void FPinaColada(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsderon, uint8 ltsdecoco, uint8 ltsdecrema, uint8 ltsdepina)
+{
+	printf("Usted selecciono la opcion Pina Colada.\nEl vaso se movera %d espacio para ser llenado\n",ron);
+	ltsderon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ron];
+	printf("El vaso se movera al espacio %d para ser llenado con coco\n",coco);
+	ltsdecoco--;
+	delay(variableparaespera); 
+	variableparaubicacion=arreglodebebidas[coco];
+	printf("El vaso se movera al espacio %d para ser llenado con crema\n",crema);
+	ltsdecrema--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[crema];
+	printf("El vaso se movera al espacio %d para ser llenado con pina\n",pina);
+	ltsdepina--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[pina];
+}
+void FCosmopolitan(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdevodka, uint8 ltsdearandono, uint8 ltsdelimon)
+{
+	printf("Usted selecciono la opcion Cosmopolitan.\nEl vaso se movera %d espacio para ser llenado\n",vodka);
+	ltsdevodka--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[vodka];
+	printf("El vaso se movera al espacio %d para ser llenado con arandano\n",arandano);
+	ltsdearandono--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[arandano];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+}
+void FLongIslandIceTea (uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera,uint8 ltsdevodka, uint8 ltsdetequila, uint8 ltsdeginebra, uint8 ltsderon, uint8 ltsdetriple, uint8 ltsdecoca)
+{
+	printf("Usted selecciono la opcion Long Is land IceTea.\nEl vaso se movera %d espacio para ser llenado\n",vodka);
+	ltsdevodka--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[vodka];
+	printf("El vaso se movera al espacio %d para ser llenado con tequila\n",tequila);
+	ltsdetequila--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[tequila];
+	printf("El vaso se movera al espacio %d para ser llenado con ginebra\n",ginebra); 
+	ltsdeginebra--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ginebra];
+	printf("El vaso se movera al espacio %d para ser llenado con ron\n",ron);
+	ltsderon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ron];
+	printf("El vaso se movera al espacio %d para ser llenado con triple\n",triple);
+	ltsdetriple--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[triple];
+	printf("El vaso se movera al espacio %d para ser llenado con coca\n",coca);
+	ltsdecoca--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[coca];
+}
+void FVodkajelly(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdevodka, uint8 ltsdelimon, uint8 ltsdefresa)
+{ 
+	printf("Usted selecciono la opcion Vodka jelly.\nEl vaso se movera %d espacio para ser llenado\n",vodka);
+	ltsdevodka--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[vodka];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon); 
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con fresa\n",fresa);
+	ltsdefresa--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[fresa];
+}
+void FAmanecermoscovita(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdevodka, uint8 ltsdelimon)
+{
+	printf("Usted selecciono la opcion Amanecer moscovita.\nEl vaso se movera %d espacio para ser llenado\n",vodka);
+	ltsdevodka--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[vodka];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon); 
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+}
+void FBloodyMary(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdevodka, uint8 ltsdefresa)
+{
+	printf("Usted selecciono la opcion Bloody Mary.\nEl vaso se movera %d espacio para ser llenado\n",vodka);
+	ltsdevodka--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[vodka];
+	printf("El vaso se movera al espacio %d para ser llenado con fresa\n",fresa); 
+	ltsdefresa--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[fresa];
+}
+void FVampiro(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdetequila, uint8 ltsdelimon, uint8 ltsdesangria, uint8 ltsdecoca)
+{
+	printf("Usted selecciono la opcion Vampiro.\nEl vaso se movera %d espacio para ser llenado\n",tequila);
+	ltsdetequila--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[tequila];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con sangria\n",sangria);
+	ltsdesangria--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[sangria];
+	printf("El vaso se movera al espacio %d para ser llenado con coca\n",coca);
+	ltsdecoca--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[coca];
+}
+void FPaloma(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdetequila, uint8 ltsdelimon, uint8 ltsdecoca)
+{
+	printf("Usted selecciono la opcion Paloma.\nEl vaso se movera %d espacio para ser llenado\n",tequila);
+	ltsdetequila--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[tequila];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon); 
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con coca\n",coca);
+	ltsdecoca--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[coca];
+}
+void FChistosita(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdetequila, uint8 ltsdetoronja)
+{
+	printf("Usted selecciono la opcion Chistosita.\nEl vaso se movera %d espacio para ser llenado\n",tequila);
+	ltsdetequila--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[tequila];
+	printf("El vaso se movera al espacio %d para ser llenado con toronja\n",toronja);
+	ltsdetoronja--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[toronja];
+}
+void FSunrise(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdetequila, uint8 ltsdenaranja, uint8 ltsdegranadina)
+{
+	printf("Usted selecciono la opcion Sunrise.\nEl vaso se movera %d espacio para ser llenado\n",tequila);
+	ltsdetequila--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[tequila];
+	printf("El vaso se movera al espacio %d para ser llenado con naranja\n",naranja); 
+	ltsdenaranja--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[naranja];
+	printf("El vaso se movera al espacio %d para ser llenado con granadina\n",granadina);
+	ltsdegranadina--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[granadina];
+}
+void FMargarita	(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdetequila, uint8 ltsdelimon)
+{
+	printf("Usted selecciono la opcion Margarita.\nEl vaso se movera %d espacio para ser llenado\n",tequila);
+	ltsdetequila--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[tequila];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon); 
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+}
+void FMartini(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdeginebra, uint8 ltsdevermut)
+{
+	printf("Usted selecciono la opcion Martini.\nEl vaso se movera %d espacio para ser llenado\n",ginebra);
+	ltsdeginebra--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ginebra];
+	printf("El vaso se movera al espacio %d para ser llenado con vermut\n",vermut);
+	ltsdevermut--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[vermut];
+}
+void FAngelCaido(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdeginebra, uint8 ltsdelimon, uint8 ltsdecrema)
+{
+	printf("Usted selecciono la opcion Martini.\nEl vaso se movera %d espacio para ser llenado\n",ginebra);
+	ltsdeginebra--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ginebra];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon);
+	ltsdelimon--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con crema\n",crema);
+	ltsdecrema--; 
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[crema];
+}
+void FMadredelanovia(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdeginebra, uint8 ltsdenaranja, uint8 ltsdefresa)
+{
+	printf("Usted selecciono la opcion Martini.\nEl vaso se movera %d espacio para ser llenado\n",ginebra);
+	ltsdeginebra--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ginebra];
+	printf("El vaso se movera al espacio %d para ser llenado con naranja\n",naranja); 
+	ltsdenaranja--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[naranja];
+	printf("El vaso se movera al espacio %d para ser llenado con fresa\n",fresa); 
+	ltsdefresa--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[fresa];
+}
+void FAuroradorada(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdeginebra, uint8 ltsdegranadina, uint8 ltsdetriple)
+{
+	printf("Usted selecciono la opcion Martini.\nEl vaso se movera %d espacio para ser llenado\n",ginebra);
+	ltsdeginebra--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ginebra];
+	printf("El vaso se movera al espacio %d para ser llenado con granadina\n",granadina); 
+	ltsdegranadina--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[granadina];
+	printf("El vaso se movera al espacio %d para ser llenado con triple seco\n",triple); 
+	ltsdetriple--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[triple];
+}
+void FBoladenieve(uint8 variableparaubicacion,uint8 arreglodebebidas[],uint8 variableparaespera, uint8 ltsdeginebra, uint8 ltsdecrema, uint8 ltsdelimon, uint8 ltsdenaranja)
+{
+	printf("Usted selecciono la opcion Martini.\nEl vaso se movera %d espacio para ser llenado\n",ginebra);
+	ltsdeginebra--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[ginebra];
+	printf("El vaso se movera al espacio %d para ser llenado con crema\n",crema);
+	ltsdecrema--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[crema];
+	printf("El vaso se movera al espacio %d para ser llenado con limon\n",limon); 
+	ltsdelimon--;
+	delay(variableparaespera);
+	variableparaubicacion=arreglodebebidas[limon];
+	printf("El vaso se movera al espacio %d para ser llenado con naranja\n",naranja);
+	ltsdenaranja--;
+	delay(variableparaespera); 
+	variableparaubicacion=arreglodebebidas[naranja];
+}
+void delay(uint8 variableparaespera)
+{
+	for(variableparaespera=Inicio;variableparaespera<=tiempo;variableparaespera++){}
+}
