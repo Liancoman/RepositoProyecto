@@ -6,6 +6,52 @@
 
 typedef unsigned int uint8;
 
+typedef enum 
+{
+	ron=1,
+	vodka,
+	tequila,
+	ginebra,
+}listadoparaAlcoholesPuro;
+typedef enum 
+{
+	alcoholpuro=1,
+	cocteles,	
+}listadoparaopciones;
+typedef enum 
+{
+	Mojito=1,
+	Maitai,
+	Caiprinha,
+	Daiquiri,
+	Pinacolada,
+}listadopararon;
+typedef enum 
+{
+	Cosmopolitan=1,
+	Longislandicetea,
+	vodkajelly,
+	Amanecermoscovita,
+	BloddyMary,	
+}listadoparavodka;
+typedef enum 
+{
+	Vampiro=1,
+	Paloma,
+	Chistosita,
+	Sunrise,
+	Margarita,	
+}listadoparatequila;
+typedef enum 
+{
+	Martini=1,
+	AngelCaido,
+	MadreLaNovia,
+	Auroradorada,
+	Boladenieve,	
+}listadoparaginebra;
+
+
 #define Inicio 0
 #define Continue 1
 #define ron 1
@@ -18,7 +64,7 @@ typedef unsigned int uint8;
 #define fresa 8
 #define arandano 9
 #define triple 10
-#define MAX 10
+#define MAX 2
 #define coco 11
 #define coca 12
 #define sangria 13

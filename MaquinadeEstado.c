@@ -2,35 +2,22 @@
 
 void main (void)
 {
-	uint8 end = Continue;
-	uint8 variableparaAlcoholorCoctel=Inicio;
-	uint8 variableparaAlcoholesPuros=Inicio;
-	uint8 variableparaCocteles=Inicio;
-	uint8 variableparaCoctelesfinal=Inicio;
-	uint8 variableparasalirdewhile1=Inicio;
-	uint8 variableparasalirdewhile2=Inicio;
-	uint8 variableparasalirdewhile3=Inicio;
-	uint8 variableparasalirdewhile4=Inicio;
-	uint8 variableparaespera=Inicio;
-	uint8 variableparaubicacion;
-	uint8 ltsderon=MAX;
-	uint8 ltsdevodka=MAX;
-	uint8 ltsdetequila=MAX;
-	uint8 ltsdeginebra=MAX;
-	uint8 ltsdelimon=MAX;
-	uint8 ltsdenaranja=MAX;
-	uint8 ltsdepina=MAX;
-	uint8 ltsdefresa=MAX;
-	uint8 ltsdearandono=MAX;
-	uint8 ltsdetriple=MAX;
-	uint8 ltsdecoca=MAX;
-	uint8 ltsdecoco=MAX;
-	uint8 ltsdesangria=MAX;
-	uint8 ltsdetoronja=MAX;
-	uint8 ltsdegranadina=MAX;
-	uint8 ltsdevermut=MAX;
-	uint8 ltsdecrema=MAX;
+	uint8 end = Continue,variableparaespera=Inicio,variableparaubicacion;
+
+	uint8 variableparaAlcoholorCoctel=Inicio,variableparaAlcoholesPuros=Inicio,variableparaCocteles=Inicio,variableparaCoctelesfinal=Inicio;
+	uint8 variableparasalirdewhile1=Inicio,variableparasalirdewhile2=Inicio,variableparasalirdewhile3=Inicio,variableparasalirdewhile4=Inicio;
+	
+	uint8 ltsderon=MAX,ltsdevodka=MAX,ltsdetequila=MAX,ltsdeginebra=MAX,ltsdelimon=MAX,ltsdenaranja=MAX,ltsdepina=MAX,ltsdefresa=MAX,ltsdearandono=MAX;
+	uint8 ltsdetriple=MAX,ltsdecoca=MAX,ltsdecoco=MAX,ltsdesangria=MAX,ltsdetoronja=MAX,ltsdegranadina=MAX,ltsdevermut=MAX,ltsdecrema=MAX;
+
 	uint8 arreglodebebidas[18]={Inicio,ron,vodka,tequila,ginebra,limon,naranja,pina,fresa,arandano,triple,coco,coca,sangria,toronja,granadina,vermut,crema};
+	
+	listadoparaopciones variableparaopcion=alcoholpuro;
+	listadoparaAlcoholesPuro variablelistado = ron;
+	listadopararon variablelistadoron=Mojito;
+	listadoparavodka variablelistadovodka=Cosmopolitan;
+	listadoparatequila variablelistadotequila=Vampiro;
+	listadoparaginebra variablelistadoginebra=Martini;
 
 	while (end==Continue)
 	{
@@ -43,47 +30,48 @@ void main (void)
 			if(variableparaAlcoholorCoctel==1 | variableparaAlcoholorCoctel==2)	variableparasalirdewhile1++;
 			else printf("Seleccione una opcion valida\n");
 		}
-		switch(variableparaAlcoholorCoctel)
+		variableparaopcion=variableparaAlcoholorCoctel;
+		switch(variableparaopcion)
 		{
-			case 1:
+			case alcoholpuro:
 				while(variableparasalirdewhile2==Inicio)
 				{
-				printf("Usted selecciono Alcohol Puro, las opciones son las siguientes:\n1)Ron\n2)Vodka\n3)Tequila\n4)Ginebra\n\nSeleccione opcion: ");
-				scanf("%d",&variableparaAlcoholesPuros);
-				if(variableparaAlcoholesPuros==1 | variableparaAlcoholesPuros==2 | variableparaAlcoholesPuros==3 | variableparaAlcoholesPuros==4)	variableparasalirdewhile2++;
-				else printf("Seleccione una opcion valida\n");
+					printf("Usted selecciono Alcohol Puro, las opciones son las siguientes:\n1)Ron\n2)Vodka\n3)Tequila\n4)Ginebra\n\nSeleccione opcion: ");
+					scanf("%d",&variableparaAlcoholesPuros);
+					if(variableparaAlcoholesPuros==1 | variableparaAlcoholesPuros==2 | variableparaAlcoholesPuros==3 | variableparaAlcoholesPuros==4)	variableparasalirdewhile2++;
+					else printf("Seleccione una opcion valida\n");
 				}
+				variablelistado=variableparaAlcoholesPuros;
 				system("cls");
-				switch(variableparaAlcoholesPuros)
+				switch(variablelistado)
 				{
-					case 1:
-					variableparaubicacion=arreglodebebidas[ron];
-					printf("Usted selecciono la opcion Ron.\nEl vaso se movera %d espacios para ser llenado\n",ron);
-					ltsderon--;
-					delay(variableparaespera);
+					case ron:
+						variableparaubicacion=arreglodebebidas[ron];
+						printf("Usted selecciono la opcion Ron.\nEl vaso se movera %d espacios para ser llenado\n",ron);
+						ltsderon--;
+						delay(variableparaespera);
 					break;
-					case 2:
-					variableparaubicacion=arreglodebebidas[vodka];
-					printf("Usted selecciono la opcion Vodka.\nEl vaso se movera %d espacios para ser llenado\n",vodka);
-					ltsdevodka--;
-					delay(variableparaespera);
+					case vodka:
+						variableparaubicacion=arreglodebebidas[vodka];
+						printf("Usted selecciono la opcion Vodka.\nEl vaso se movera %d espacios para ser llenado\n",vodka);
+						ltsdevodka--;
+						delay(variableparaespera);
 					break;
-					case 3:
-					variableparaubicacion=arreglodebebidas[tequila];
-					printf("Usted selecciono la opcion Tequila.\nEl vaso se movera %d espacios para ser llenado\n",tequila);
-					ltsdetequila--;
-					delay(variableparaespera);
+					case tequila:
+						variableparaubicacion=arreglodebebidas[tequila];
+						printf("Usted selecciono la opcion Tequila.\nEl vaso se movera %d espacios para ser llenado\n",tequila);
+						ltsdetequila--;
+						delay(variableparaespera);
 					break;
-					case 4:
-					variableparaubicacion=arreglodebebidas[ginebra];
-					printf("Usted selecciono la opcion Ginebra.\nEl vaso se movera %d espacios para ser llenado\n",ginebra);
-					ltsdeginebra--;
-					delay(variableparaespera);
+					case ginebra:
+						variableparaubicacion=arreglodebebidas[ginebra];
+						printf("Usted selecciono la opcion Ginebra.\nEl vaso se movera %d espacios para ser llenado\n",ginebra);
+						ltsdeginebra--;
+						delay(variableparaespera);
 					break;
 				}
 			break;
-
-			case 2:
+			case cocteles:
 				while(variableparasalirdewhile3==Inicio)
 				{
 					printf("Usted selecciono Cocteles, los alcholes bases son los siguientes:\n1)Ron\n2)Vodka\n3)Tequila\n4)Ginebra\n\nSeleccione opcion: ");
@@ -91,98 +79,103 @@ void main (void)
 					if(variableparaCocteles==1 | variableparaCocteles==2 | variableparaCocteles==3 | variableparaCocteles==4)	variableparasalirdewhile3++;
 					else printf("Seleccione una opcion valida\n");
 				}
+				variablelistado=variableparaCocteles;
 				system("cls");
-				switch(variableparaCocteles)
+				switch(variablelistado)
 				{
-				case 1:
-					while(variableparasalirdewhile4==Inicio)
-					{
-					printf("Los cocteles que le ofresemos son los siguinetes:\n1)Mojito\n2)Mai Tai\n3)Caipirinha\n4)Daiquiri\n5)Pina Colada\nSeleccione que desea: ");
-					scanf("%d",&variableparaCoctelesfinal);
-					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
-					else printf("Seleccione una opcion valida\n");
-					}
-					switch(variableparaCoctelesfinal)
+					case ron:
+						while(variableparasalirdewhile4==Inicio)
 						{
-							case 1: FMojito(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon);
+							printf("Los cocteles que le ofresemos son los siguinetes:\n1)Mojito\n2)Mai Tai\n3)Caipirinha\n4)Daiquiri\n5)Pina Colada\nSeleccione que desea: ");
+							scanf("%d",&variableparaCoctelesfinal);
+							if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
+							else printf("Seleccione una opcion valida\n");
+						}
+						variablelistadoron=variableparaCoctelesfinal;
+						switch(variablelistadoron)
+						{
+							case Mojito: FMojito(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon);
 							break;
-							case 2: FMaiTai(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdenaranja,ltsdepina,ltsdetriple);
+							case Maitai: FMaiTai(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdenaranja,ltsdepina,ltsdetriple);
 							break;
-							case 3:	FCaipirinha(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdepina,ltsdetriple);
+							case Caiprinha:	FCaipirinha(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdepina,ltsdetriple);
 							break;
-							case 4: FDaiquiri(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdefresa);
+							case Daiquiri: FDaiquiri(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdelimon,ltsdefresa);
 							break;
-							case 5:	FPinaColada(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdecoco,ltsdecrema,ltsdepina);
+							case Pinacolada:	FPinaColada(variableparaubicacion,arreglodebebidas,variableparaespera,ltsderon,ltsdecoco,ltsdecrema,ltsdepina);
 							break;
 						}	
-				break;
-				case 2:
-					while(variableparasalirdewhile4==Inicio)
-					{
-					printf("Los cocteles que le ofresemos son los siguinetes:\n1)Cosmopolitan\n2)Long Island Ice Tea\n3)Vodka jelly\n4)Amanecer moscovita\n5)Bloody Mary\nSeleccione que desea: ");
-					scanf("%d",&variableparaCoctelesfinal);
-					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
-					else printf("Seleccione una opcion valida\n");
-					}
-					switch(variableparaCoctelesfinal)
+					break;
+					case vodka:
+						while(variableparasalirdewhile4==Inicio)
+						{
+							printf("Los cocteles que le ofresemos son los siguinetes:\n1)Cosmopolitan\n2)Long Island Ice Tea\n3)Vodka jelly\n4)Amanecer moscovita\n5)Bloody Mary\nSeleccione que desea: ");
+							scanf("%d",&variableparaCoctelesfinal);
+							if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
+							else printf("Seleccione una opcion valida\n");
+						}
+						variablelistadovodka=variableparaCoctelesfinal;
+						switch(variablelistadovodka)
 						{	
-							case 1: FCosmopolitan(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdearandono,ltsdelimon);
+							case Cosmopolitan: FCosmopolitan(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdearandono,ltsdelimon);
 							break;
-							case 2: FLongIslandIceTea(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdetequila,ltsdeginebra,ltsderon,ltsdetriple,ltsdecoca);
+							case Longislandicetea: FLongIslandIceTea(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdetequila,ltsdeginebra,ltsderon,ltsdetriple,ltsdecoca);
 							break;
-							case 3: FVodkajelly(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdelimon,ltsdefresa);
+							case vodkajelly: FVodkajelly(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdelimon,ltsdefresa);
 							break;
-							case 4: FAmanecermoscovita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdelimon);
+							case Amanecermoscovita: FAmanecermoscovita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdelimon);
 							break;
-							case 5: FBloodyMary(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdefresa);
+							case BloddyMary: FBloodyMary(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdevodka,ltsdefresa);
 							break;
 						}	
-				break;
-				case 3:
-					while(variableparasalirdewhile4==Inicio)
-					{
-					printf("Los cocteles que le ofresemos son los siguinetes:\n1)Vampiro\n2)Paloma\n3)Chistosita\n4)Sunrise\n5)Margarita\nSeleccione que desea: ");
-					scanf("%d",&variableparaCoctelesfinal);
-					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
-					else printf("Seleccione una opcion valida\n");
-					}
-					switch(variableparaCoctelesfinal)
+					break;
+					case tequila:
+						while(variableparasalirdewhile4==Inicio)
 						{
-							case 1: FVampiro(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila, ltsdelimon,ltsdesangria,ltsdecoca);
-							break;
-							case 2: FPaloma(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdelimon,ltsdecoca);
-							break;
-							case 3: FChistosita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdetoronja);
-							break;
-							case 4: FSunrise(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdenaranja,ltsdegranadina);
-							break;
-							case 5: FMargarita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdelimon);
-							break;
-						}	
-				break;
-				case 4:
-					while(variableparasalirdewhile4==Inicio)
-					{
-					printf("Los cocteles que le ofresemos son los siguinetes:\n1)Martini\n2)Angel Caido\n3)Madre de la novia\n4)Aurora dorada\n5)Bola de nieve\nSeleccione que desea: ");
-					scanf("%d",&variableparaCoctelesfinal);
-					if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
-					else printf("Seleccione una opcion valida\n");
-					}
-					switch(variableparaCoctelesfinal)
+							printf("Los cocteles que le ofresemos son los siguinetes:\n1)Vampiro\n2)Paloma\n3)Chistosita\n4)Sunrise\n5)Margarita\nSeleccione que desea: ");
+							scanf("%d",&variableparaCoctelesfinal);
+							if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
+							else printf("Seleccione una opcion valida\n");
+						}
+						variablelistadotequila=variableparaCoctelesfinal;
+						switch(variablelistadotequila)
 						{
-							case 1: FMartini(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdevermut);
+							case Vampiro: FVampiro(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila, ltsdelimon,ltsdesangria,ltsdecoca);
 							break;
-							case 2: FAngelCaido(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdelimon,  ltsdecrema);
+							case Paloma: FPaloma(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdelimon,ltsdecoca);
 							break;
-							case 3: FMadredelanovia(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdenaranja,  ltsdefresa);
+							case Chistosita: FChistosita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdetoronja);
 							break;
-							case 4: FAuroradorada(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdegranadina,  ltsdetriple);
+							case Sunrise: FSunrise(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdenaranja,ltsdegranadina);
 							break;
-							case 5:FBoladenieve(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdecrema,  ltsdelimon,  ltsdenaranja);
+							case Margarita: FMargarita(variableparaubicacion,arreglodebebidas,variableparaespera,ltsdetequila,ltsdelimon);
 							break;
 						}	
-				break;
-			}
+					break;
+					case ginebra:
+						while(variableparasalirdewhile4==Inicio)
+						{
+							printf("Los cocteles que le ofresemos son los siguinetes:\n1)Martini\n2)Angel Caido\n3)Madre de la novia\n4)Aurora dorada\n5)Bola de nieve\nSeleccione que desea: ");
+							scanf("%d",&variableparaCoctelesfinal);
+							if(variableparaCoctelesfinal==1|variableparaCoctelesfinal==2|variableparaCoctelesfinal==3|variableparaCoctelesfinal==4|variableparaCoctelesfinal==5)	variableparasalirdewhile4++;
+							else printf("Seleccione una opcion valida\n");
+						}
+						variablelistadoginebra=variableparaCoctelesfinal;
+						switch(variablelistadoginebra)
+						{
+							case Martini: FMartini(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdevermut);
+							break;
+							case AngelCaido: FAngelCaido(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdelimon,  ltsdecrema);
+							break;
+							case MadreLaNovia: FMadredelanovia(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdenaranja,  ltsdefresa);
+							break;
+							case Auroradorada: FAuroradorada(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdegranadina,  ltsdetriple);
+							break;
+							case Boladenieve:FBoladenieve(variableparaubicacion,arreglodebebidas,variableparaespera,  ltsdeginebra,  ltsdecrema,  ltsdelimon,  ltsdenaranja);
+							break;
+						}	
+					break;
+				}
 			break;
 		}
 		printf("Se recorera el soporte del vaso al inicio\n");
