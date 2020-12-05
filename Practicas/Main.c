@@ -2,5 +2,9 @@
 
 void main (void)
 {
-	BML();
+	while(1) // mover para main.c
+	{
+		BML();
+	}
+	
 }

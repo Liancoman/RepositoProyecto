@@ -3,7 +3,7 @@
 void BML ( void ) 
 {
 	StatesMachine ();
-	
+	delay(1);
 }
 
 

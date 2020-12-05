@@ -2,13 +2,12 @@
 #include "BML.h"
 void StatesMachine ( void )
 {
-	CM_StateMachine enCurrentState = enTime;
+	static CM_StateMachine enCurrentState = enTime;
 	static uint16 u16BombA; 
 	static uint16 u16BombB;
 	static uint16 u16BombC; 
-	static uint8 u8Confirm; 
-	while(1)
-	{
+	static uint8 u8Confirm;
+	static uint8 u8Contador=Reinicio; 
 		switch ( enCurrentState )
 		{
 			case enTime:
@@ -63,16 +62,25 @@ void StatesMachine ( void )
 					u16BombC--;
 					printf("Bomb C ACTIVE, time left %d seg\n", u16BombC);
 				}
+
 				if(u16BombA == 0 & u16BombB == 0 & u16BombC == 0)
 				{
-					enCurrentState = enTime;
-					printf("Se reiniciara todo en 3 segundos\n");
-					delay (3);
+					printf("Se reiniciara todo en %d segundos\n",u8Contador);
+					if(u8Contador==0)
+					{
+						enCurrentState = enTime;
+					}
+					else
+					{
+						u8Contador--;
+					}
+					
+//contador 					
 				}	
 			break;
 		}
-		delay (1);
+
 		printf("\n"); 
-	}
+	
 }
 

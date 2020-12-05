@@ -3,6 +3,7 @@
 //DEFINE 
 #define YES   1
 #define NO    2 
+#define Reinicio 3
 //Variables/Listado 
 
 typedef enum
