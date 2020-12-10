@@ -1,0 +1,94 @@
+//Sensor detector de llama de ensendedor con arduino.
+typedef unsigned char uint8;
+static uint8 u8toContador;
+uint8 u8ToLED_VERDE = 13; // LEDV pin
+uint8 u8ToLED_AZUL = 12; // LEDA pin
+uint8 u8ToLED_ROJO = 11; // LEDR pin
+uint8 u8TodigitalPin = 2; // KY-026 entrada digital
+uint8 u8ToanalogPin = A0; // KY-026 entrada análoga
+uint8 u8TodigitalVal; // lectura digital
+uint8 u8ToanalogVal; // lectura análoga
+//LISTADO
+typedef enum
+{
+  enLedGreen = 0,
+  enLedAzul,
+  enLedRed,
+} DM_AllStates;
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(u8ToLED_VERDE, OUTPUT);
+  pinMode(u8ToLED_AZUL, OUTPUT);
+  pinMode(u8ToLED_ROJO, OUTPUT);
+  pinMode(u8TodigitalPin, INPUT);
+  //pinMode(analogPin, OUTPUT);
+  Serial.begin(9600);
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+    static DM_AllStates enCurrentState = enLedGreen;  
+    u8TodigitalVal = digitalRead(u8TodigitalPin); 
+    switch ( enCurrentState )
+    {
+        case enLedGreen:
+            if (u8TodigitalVal == HIGH)
+            {
+                enCurrentState = enLedRed;
+                break;
+            }
+            else
+            {
+                Serial.println("TODO BIEN, ALARMA APAGADA\n");
+                digitalWrite(u8ToLED_VERDE, HIGH);
+                digitalWrite(u8ToLED_ROJO, LOW);
+                digitalWrite(u8ToLED_AZUL, LOW);
+                break;
+            }
+        break;
+        case enLedAzul:
+            if (u8TodigitalVal == LOW)
+            {
+                Serial.println("APAGANDO ALARMA, ESPERE 5 SEGUNDOS\n");
+                digitalWrite(u8ToLED_VERDE, LOW);
+                digitalWrite(u8ToLED_ROJO, LOW);
+                digitalWrite(u8ToLED_AZUL, HIGH);
+                delay(1000);
+                digitalWrite(u8ToLED_AZUL, LOW);
+                u8toContador++;
+                if(u8toContador==5)
+                {
+                  enCurrentState = enLedGreen;
+                }
+                else
+                {
+                  //Nothing to do
+                }
+                break;
+            }
+            else
+            {
+                enCurrentState = enLedRed;
+                break;
+            }
+        break;  
+        case enLedRed:
+        u8toContador=0;
+            if (u8TodigitalVal == HIGH)
+            {
+                Serial.println("ADVERTENCIA,ALARMA PRENDIDA\n");
+                digitalWrite(u8ToLED_ROJO, HIGH);
+                digitalWrite(u8ToLED_AZUL, LOW);
+                digitalWrite(u8ToLED_VERDE, LOW);
+                break;
+            }
+            else
+            {
+                enCurrentState = enLedAzul;
+                break;
+            }
+        break;
+    }    
+    // lectura entrada análoga
+    u8ToanalogVal = analogRead(u8ToanalogPin);
+    Serial.println(u8ToanalogVal); 
+}
